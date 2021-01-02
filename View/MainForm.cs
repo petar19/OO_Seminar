@@ -1,4 +1,5 @@
 ﻿using OO_Seminar.Controller;
+using OO_Seminar.DomainModel;
 using OO_Seminar.View;
 using System;
 using System.Collections.Generic;
@@ -36,6 +37,28 @@ namespace OO_Seminar
         public void SetController(MainController controller)
         {
             _controller = controller;
+        }
+
+
+        public void AddMealToList(Meal meal)
+        {
+            ListViewItem item = new ListViewItem(meal.Name);
+            item.SubItems.Add(meal.MealType.ToString());
+            item.SubItems.Add(meal.Timestamp.ToString());
+            item.SubItems.Add(meal.Rating.ToString());
+
+            listViewMeals.Items.Add(item);
+
+        }
+
+        private void listViewMeals_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        public void Clear()
+        {
+            listViewMeals.Items.Clear();
         }
     }
 }

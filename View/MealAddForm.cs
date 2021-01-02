@@ -1,4 +1,5 @@
 ﻿using OO_Seminar.Controller;
+using OO_Seminar.DomainModel;
 using OO_Seminar.View;
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,7 @@ namespace OO_Seminar
 
         private void saveBtn_Click(object sender, EventArgs e)
         {
-
+            _controller.insertMeal();
         }
            
         private void cancelBtn_Click(object sender, EventArgs e)
@@ -51,7 +52,19 @@ namespace OO_Seminar
 
         private void mealNameTextBox_TextChanged(object sender, EventArgs e)
         {
-
+            _controller.mealNameChanged();
         }
+
+
+
+        public string MealName { get => comboBoxName.Text; set => comboBoxName.Text = value; }
+        public string Description { get => richTextBoxDescription.Text; set => richTextBoxDescription.Text = value; }
+        public MealType MealType { get => (MealType) Enum.Parse(typeof(MealType), comboBoxMealType.Text); set => comboBoxMealType.Text = value.ToString(); }
+        public DateTime Timestamp { get => dateTimePicker.Value; set => dateTimePicker.Value = value; }
+        public int Rating { get => trackBarRating.Value; set => trackBarRating.Value = value; }
+
+
+
+
     }
 }

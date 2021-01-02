@@ -30,6 +30,17 @@ namespace OO_Seminar.Controller
 
         }
 
+        public void insertMeal()
+        {
+            Meal meal = new Meal { Name = _view.MealName, Description = _view.Description, MealType = _view.MealType, Timestamp = _view.Timestamp, Rating = _view.Rating};
+
+            Console.WriteLine("inserting meal: {0} {1} {2} {3} {4} {5} {6}", meal.Id, meal.Name, meal.Description, meal.DishType, meal.Timestamp, meal.Rating, meal.Calories);
+
+            DatabaseHelper.insertMeal(meal);
+
+            _view.Close();
+        }
+
         public void resetView()
         {
             // set view params according to meal

@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Controller\MainController.cs" />
     <Compile Include="Controller\MealAddController.cs" />
+    <Compile Include="DatabaseHelper.cs" />
     <Compile Include="DomainModel\DishType.cs" />
     <Compile Include="DomainModel\Ingredient.cs" />
     <Compile Include="DomainModel\IngredientCategory.cs" />
