@@ -29,11 +29,12 @@
         private void InitializeComponent()
         {
             this.mealDetailsBox = new System.Windows.Forms.GroupBox();
+            this.buttonChooseImage = new System.Windows.Forms.Button();
             this.pictureBoxMealImage = new System.Windows.Forms.PictureBox();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.flowLayoutPanelIngredients = new System.Windows.Forms.FlowLayoutPanel();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.panelIngredientList = new System.Windows.Forms.Panel();
+            this.buttonRemoveIngredient = new System.Windows.Forms.Button();
+            this.buttonAddIngredient = new System.Windows.Forms.Button();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.trackBarPrice = new System.Windows.Forms.TrackBar();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
@@ -60,7 +61,6 @@
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             this.comboBoxName = new System.Windows.Forms.ComboBox();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.buttonChooseImage = new System.Windows.Forms.Button();
             this.mealDetailsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMealImage)).BeginInit();
             this.groupBox10.SuspendLayout();
@@ -104,6 +104,16 @@
             this.mealDetailsBox.TabStop = false;
             this.mealDetailsBox.Text = "Meal details";
             // 
+            // buttonChooseImage
+            // 
+            this.buttonChooseImage.Location = new System.Drawing.Point(1015, 405);
+            this.buttonChooseImage.Name = "buttonChooseImage";
+            this.buttonChooseImage.Size = new System.Drawing.Size(99, 23);
+            this.buttonChooseImage.TabIndex = 11;
+            this.buttonChooseImage.Text = "Choose image";
+            this.buttonChooseImage.UseVisualStyleBackColor = true;
+            this.buttonChooseImage.Click += new System.EventHandler(this.buttonChooseImage_Click);
+            // 
             // pictureBoxMealImage
             // 
             this.pictureBoxMealImage.InitialImage = null;
@@ -116,9 +126,9 @@
             // 
             // groupBox10
             // 
-            this.groupBox10.Controls.Add(this.flowLayoutPanelIngredients);
-            this.groupBox10.Controls.Add(this.button5);
-            this.groupBox10.Controls.Add(this.button4);
+            this.groupBox10.Controls.Add(this.panelIngredientList);
+            this.groupBox10.Controls.Add(this.buttonRemoveIngredient);
+            this.groupBox10.Controls.Add(this.buttonAddIngredient);
             this.groupBox10.Location = new System.Drawing.Point(414, 19);
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.Size = new System.Drawing.Size(363, 415);
@@ -126,33 +136,36 @@
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Ingredients";
             // 
-            // flowLayoutPanelIngredients
+            // panelIngredientList
             // 
-            this.flowLayoutPanelIngredients.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.panelIngredientList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanelIngredients.Location = new System.Drawing.Point(6, 19);
-            this.flowLayoutPanelIngredients.Name = "flowLayoutPanelIngredients";
-            this.flowLayoutPanelIngredients.Size = new System.Drawing.Size(351, 361);
-            this.flowLayoutPanelIngredients.TabIndex = 11;
+            this.panelIngredientList.AutoScroll = true;
+            this.panelIngredientList.Location = new System.Drawing.Point(6, 19);
+            this.panelIngredientList.Name = "panelIngredientList";
+            this.panelIngredientList.Size = new System.Drawing.Size(351, 361);
+            this.panelIngredientList.TabIndex = 11;
             // 
-            // button5
+            // buttonRemoveIngredient
             // 
-            this.button5.Location = new System.Drawing.Point(262, 386);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(32, 23);
-            this.button5.TabIndex = 10;
-            this.button5.Text = "-";
-            this.button5.UseVisualStyleBackColor = true;
+            this.buttonRemoveIngredient.Location = new System.Drawing.Point(262, 386);
+            this.buttonRemoveIngredient.Name = "buttonRemoveIngredient";
+            this.buttonRemoveIngredient.Size = new System.Drawing.Size(32, 23);
+            this.buttonRemoveIngredient.TabIndex = 10;
+            this.buttonRemoveIngredient.Text = "-";
+            this.buttonRemoveIngredient.UseVisualStyleBackColor = true;
+            this.buttonRemoveIngredient.Click += new System.EventHandler(this.buttonRemoveIngredient_Click);
             // 
-            // button4
+            // buttonAddIngredient
             // 
-            this.button4.Location = new System.Drawing.Point(300, 386);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(32, 23);
-            this.button4.TabIndex = 0;
-            this.button4.Text = "+";
-            this.button4.UseVisualStyleBackColor = true;
+            this.buttonAddIngredient.Location = new System.Drawing.Point(300, 386);
+            this.buttonAddIngredient.Name = "buttonAddIngredient";
+            this.buttonAddIngredient.Size = new System.Drawing.Size(32, 23);
+            this.buttonAddIngredient.TabIndex = 0;
+            this.buttonAddIngredient.Text = "+";
+            this.buttonAddIngredient.UseVisualStyleBackColor = true;
+            this.buttonAddIngredient.Click += new System.EventHandler(this.buttonAddIngredient_Click);
             // 
             // groupBox9
             // 
@@ -458,16 +471,6 @@
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Meal name";
             // 
-            // buttonChooseImage
-            // 
-            this.buttonChooseImage.Location = new System.Drawing.Point(1015, 405);
-            this.buttonChooseImage.Name = "buttonChooseImage";
-            this.buttonChooseImage.Size = new System.Drawing.Size(99, 23);
-            this.buttonChooseImage.TabIndex = 11;
-            this.buttonChooseImage.Text = "Choose image";
-            this.buttonChooseImage.UseVisualStyleBackColor = true;
-            this.buttonChooseImage.Click += new System.EventHandler(this.buttonChooseImage_Click);
-            // 
             // MealAddForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -532,11 +535,11 @@
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.TrackBar trackBarCalories;
         private System.Windows.Forms.GroupBox groupBox10;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelIngredients;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button buttonRemoveIngredient;
+        private System.Windows.Forms.Button buttonAddIngredient;
         private System.Windows.Forms.GroupBox groupBox11;
         private System.Windows.Forms.PictureBox pictureBoxMealImage;
         private System.Windows.Forms.Button buttonChooseImage;
+        private System.Windows.Forms.Panel panelIngredientList;
     }
 }

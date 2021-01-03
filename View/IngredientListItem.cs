@@ -12,9 +12,20 @@ namespace OO_Seminar.View
 {
     public partial class IngredientListItem : UserControl
     {
-        public IngredientListItem()
+        public bool IsSelected;
+
+        public IngredientListItem(List<string> options)
         {
             InitializeComponent();
+            comboBoxIngredientName.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            comboBoxIngredientName.AutoCompleteSource = AutoCompleteSource.ListItems;
+            comboBoxIngredientName.DataSource = options;
+        }
+
+        private void checkBoxIngredientListItem_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxIngredientListItem.Checked) IsSelected = true;
+            else IsSelected = false;
         }
     }
 }

@@ -15,12 +15,16 @@ namespace OO_Seminar.Controller
         private IMealAddView _view;
         private Meal _meal;
 
+        private List<IngredientListItem> ingredients;
+
         public MealAddController(IMealAddView view)
         {
             _view = view;
             _view.SetController(this);
 
             _view.Image = Properties.Resources.MealArt;
+
+            ingredients = new List<IngredientListItem>();
         }
 
         public MealAddController(IMealAddView view, Meal meal)
@@ -62,6 +66,25 @@ namespace OO_Seminar.Controller
                 _view.Image = new Bitmap(dialog.FileName);
             }
 
+        }
+
+        public void addIngredientBtn()
+        {
+            IngredientListItem ili = new IngredientListItem(new List<string> { "sunka", "sir", "jogurt", "maslac" });
+            ili.Dock = DockStyle.Top;
+
+            ingredients.Add(ili);
+
+            ingredients.Reverse();
+            _view.SetIngredientListItems(ingredients.ToArray());
+        }
+
+        public void removeIngredientBtn()
+        {
+            ingredients.RemoveAll(x => x.IsSelected);
+
+            ingredients.Reverse();
+            _view.SetIngredientListItems(ingredients.ToArray());
         }
 
     }

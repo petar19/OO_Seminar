@@ -14,6 +14,8 @@ namespace OO_Seminar.View
         void SetController(MealAddController mealAddController);
         void Close();
 
+        void SetIngredientListItems(IngredientListItem[] ingredientListItems);
+
         string MealName { get; set; }
         string Description { get; set; }
         string MealType { get; set; }

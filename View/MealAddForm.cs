@@ -72,5 +72,21 @@ namespace OO_Seminar
         public int Price { get => trackBarPrice.Value; set => trackBarPrice.Value = value; }
         public Image Image { get => pictureBoxMealImage.Image; set => pictureBoxMealImage.Image = value; }
 
+        private void buttonAddIngredient_Click(object sender, EventArgs e)
+        {
+            _controller.addIngredientBtn();
+        }
+
+
+        public void SetIngredientListItems(IngredientListItem[] ingredientListItems)
+        {
+            panelIngredientList.Controls.Clear();
+            panelIngredientList.Controls.AddRange(ingredientListItems);
+        }
+
+        private void buttonRemoveIngredient_Click(object sender, EventArgs e)
+        {
+            _controller.removeIngredientBtn();
+        }
     }
 }
