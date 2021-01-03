@@ -43,7 +43,7 @@ namespace OO_Seminar
         public void AddMealToList(Meal meal)
         {
             ListViewItem item = new ListViewItem(meal.Name);
-            item.SubItems.Add(meal.MealType.ToString());
+            item.SubItems.Add(meal.MealType);
             item.SubItems.Add(meal.Timestamp.ToString());
             item.SubItems.Add(meal.Rating.ToString());
 

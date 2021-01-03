@@ -2,9 +2,11 @@
 using OO_Seminar.View;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace OO_Seminar.Controller
 {
@@ -17,6 +19,8 @@ namespace OO_Seminar.Controller
         {
             _view = view;
             _view.SetController(this);
+
+            _view.Image = Properties.Resources.MealArt;
         }
 
         public MealAddController(IMealAddView view, Meal meal)
@@ -30,7 +34,7 @@ namespace OO_Seminar.Controller
 
         }
 
-        public void insertMeal()
+        public void saveMealBtn()
         {
             Meal meal = new Meal { Name = _view.MealName, Description = _view.Description, MealType = _view.MealType, Timestamp = _view.Timestamp, Rating = _view.Rating};
 
@@ -41,9 +45,23 @@ namespace OO_Seminar.Controller
             _view.Close();
         }
 
-        public void resetView()
+        public void resetBtn()
         {
             // set view params according to meal
+        }
+
+        public void chooseImageBtn()
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+
+            dialog.Title = "Choose meal image";
+            dialog.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
+
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                _view.Image = new Bitmap(dialog.FileName);
+            }
+
         }
 
     }

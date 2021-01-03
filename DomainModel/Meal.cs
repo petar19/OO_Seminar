@@ -14,10 +14,10 @@ namespace OO_Seminar.DomainModel
         public string Name { get; set; }
         public string Description { get; set; }
 
-        public MealType MealType { get; set; }
-        public DishType DishType { get; set; }
-        public MealLocation MealLocation { get; set; }
-        public PreparationType PreparationType { get; set; }
+        public string MealType { get; set; }
+        public string DishType { get; set; }
+        public string MealLocation { get; set; }
+        public string PreparationType { get; set; }
 
         public DateTime Timestamp { get; set; }
 
