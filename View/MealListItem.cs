@@ -31,7 +31,7 @@ namespace OO_Seminar.View
 
 
         public new string Name { get => labelName.Text; set => labelName.Text = value; }
-        public string Description { get => labelDescription.Text; set => labelDescription.Text = value; }
+        public string Description { get => textBoxDescription.Text; set => textBoxDescription.Text = value; }
         public string MealType { get => labelMealType.Text; set => labelMealType.Text = value; }
         public string DishType { get => labelDishType.Text; set => labelDishType.Text = value; }
         public string PreparationType { get => labelPreparationType.Text; set => labelPreparationType.Text = value; }

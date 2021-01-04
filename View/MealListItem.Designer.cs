@@ -30,7 +30,6 @@
         {
             this.pictureBoxMealImage = new System.Windows.Forms.PictureBox();
             this.labelName = new System.Windows.Forms.Label();
-            this.labelDescription = new System.Windows.Forms.Label();
             this.labelMealType = new System.Windows.Forms.Label();
             this.labelDishType = new System.Windows.Forms.Label();
             this.labelPreparationType = new System.Windows.Forms.Label();
@@ -45,6 +44,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.textBoxDescription = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMealImage)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,18 +72,6 @@
             this.labelName.TabIndex = 1;
             this.labelName.Text = "Meal Name";
             this.labelName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // labelDescription
-            // 
-            this.labelDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelDescription.Location = new System.Drawing.Point(708, 26);
-            this.labelDescription.Name = "labelDescription";
-            this.labelDescription.Size = new System.Drawing.Size(202, 160);
-            this.labelDescription.TabIndex = 2;
-            this.labelDescription.Text = "Description.";
             // 
             // labelMealType
             // 
@@ -210,11 +198,25 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Price:";
             // 
+            // textBoxDescription
+            // 
+            this.textBoxDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxDescription.Location = new System.Drawing.Point(674, 26);
+            this.textBoxDescription.Multiline = true;
+            this.textBoxDescription.Name = "textBoxDescription";
+            this.textBoxDescription.ReadOnly = true;
+            this.textBoxDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBoxDescription.Size = new System.Drawing.Size(236, 166);
+            this.textBoxDescription.TabIndex = 6;
+            // 
             // MealListItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.textBoxDescription);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.labelLocation);
             this.Controls.Add(this.label2);
@@ -228,7 +230,6 @@
             this.Controls.Add(this.labelCalories);
             this.Controls.Add(this.labelMealType);
             this.Controls.Add(this.labelName);
-            this.Controls.Add(this.labelDescription);
             this.Controls.Add(this.pictureBoxMealImage);
             this.Name = "MealListItem";
             this.Size = new System.Drawing.Size(913, 195);
@@ -242,7 +243,6 @@
 
         private System.Windows.Forms.PictureBox pictureBoxMealImage;
         private System.Windows.Forms.Label labelName;
-        private System.Windows.Forms.Label labelDescription;
         private System.Windows.Forms.Label labelLocation;
         private System.Windows.Forms.Label labelPreparationType;
         private System.Windows.Forms.Label labelDishType;
@@ -257,5 +257,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBoxDescription;
     }
 }
