@@ -32,7 +32,7 @@ namespace OO_Seminar.Controller
         {
             _view.Clear();
 
-            List<Meal> meals = DatabaseHelper.getAllMeals();
+            List<Meal> meals = DatabaseHelper.GetAllMeals();
 
             Console.WriteLine("refershing meal list");
             

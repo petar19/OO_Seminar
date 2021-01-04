@@ -29,17 +29,13 @@
         private void InitializeComponent()
         {
             this.mealAddBtn = new System.Windows.Forms.Button();
-            this.listViewMeals = new System.Windows.Forms.ListView();
-            this.MealName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.MealType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Timestamp = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Rating = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.panelMeals = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // mealAddBtn
             // 
             this.mealAddBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.mealAddBtn.Location = new System.Drawing.Point(12, 542);
+            this.mealAddBtn.Location = new System.Drawing.Point(12, 548);
             this.mealAddBtn.Name = "mealAddBtn";
             this.mealAddBtn.Size = new System.Drawing.Size(75, 23);
             this.mealAddBtn.TabIndex = 0;
@@ -47,54 +43,23 @@
             this.mealAddBtn.UseVisualStyleBackColor = true;
             this.mealAddBtn.Click += new System.EventHandler(this.addMealBtn_Click);
             // 
-            // listViewMeals
+            // panelMeals
             // 
-            this.listViewMeals.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.panelMeals.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.listViewMeals.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.MealName,
-            this.MealType,
-            this.Timestamp,
-            this.Rating});
-            this.listViewMeals.HideSelection = false;
-            this.listViewMeals.Location = new System.Drawing.Point(93, 12);
-            this.listViewMeals.Name = "listViewMeals";
-            this.listViewMeals.Size = new System.Drawing.Size(934, 553);
-            this.listViewMeals.TabIndex = 1;
-            this.listViewMeals.UseCompatibleStateImageBehavior = false;
-            this.listViewMeals.View = System.Windows.Forms.View.Details;
-            this.listViewMeals.SelectedIndexChanged += new System.EventHandler(this.listViewMeals_SelectedIndexChanged);
-            // 
-            // MealName
-            // 
-            this.MealName.Text = "Name";
-            this.MealName.Width = 120;
-            // 
-            // MealType
-            // 
-            this.MealType.Text = "Meal type";
-            this.MealType.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.MealType.Width = 120;
-            // 
-            // Timestamp
-            // 
-            this.Timestamp.Text = "Timestamp";
-            this.Timestamp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Timestamp.Width = 200;
-            // 
-            // Rating
-            // 
-            this.Rating.Text = "Meal rating";
-            this.Rating.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Rating.Width = 80;
+            this.panelMeals.AutoScroll = true;
+            this.panelMeals.Location = new System.Drawing.Point(97, 12);
+            this.panelMeals.Name = "panelMeals";
+            this.panelMeals.Size = new System.Drawing.Size(958, 559);
+            this.panelMeals.TabIndex = 1;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1039, 577);
-            this.Controls.Add(this.listViewMeals);
+            this.ClientSize = new System.Drawing.Size(1067, 583);
+            this.Controls.Add(this.panelMeals);
             this.Controls.Add(this.mealAddBtn);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -107,11 +72,7 @@
         #endregion
 
         private System.Windows.Forms.Button mealAddBtn;
-        private System.Windows.Forms.ListView listViewMeals;
-        private System.Windows.Forms.ColumnHeader MealName;
-        private System.Windows.Forms.ColumnHeader MealType;
-        private System.Windows.Forms.ColumnHeader Timestamp;
-        private System.Windows.Forms.ColumnHeader Rating;
+        private System.Windows.Forms.Panel panelMeals;
     }
 }
 

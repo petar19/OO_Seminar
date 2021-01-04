@@ -42,23 +42,31 @@ namespace OO_Seminar
 
         public void AddMealToList(Meal meal)
         {
-            ListViewItem item = new ListViewItem(meal.Name);
-            item.SubItems.Add(meal.MealType);
-            item.SubItems.Add(meal.Timestamp.ToString());
-            item.SubItems.Add(meal.Rating.ToString());
+            MealListItem item = new MealListItem();
 
-            listViewMeals.Items.Add(item);
+            item.Name = meal.Name;
+            item.Description = meal.Description;
+            item.MealType = meal.MealType;
+            item.DishType = meal.DishType;
+            item.PreparationType = meal.PreparationType;
+            item.Location = meal.Location;
+            item.Timestamp = meal.Timestamp.ToString();
+            item.Rating = meal.Rating.ToString();
+            item.Calories = meal.Calories.ToString();
+            item.Price = meal.Price.ToString();
+            item.Image = meal.Image == null ? Properties.Resources.MealArt : DatabaseHelper.GetMealImage(meal.Image);
 
-        }
+            item.SetIngredients(meal.Ingredients);
 
-        private void listViewMeals_SelectedIndexChanged(object sender, EventArgs e)
-        {
+            item.Dock = DockStyle.Top;
+
+            panelMeals.Controls.Add(item);
 
         }
 
         public void Clear()
         {
-            listViewMeals.Items.Clear();
+            panelMeals.Controls.Clear();
         }
     }
 }

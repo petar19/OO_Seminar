@@ -64,7 +64,7 @@ namespace OO_Seminar
         public string MealType { get => comboBoxMealType.Text; set => comboBoxMealType.Text = value; }
         public string DishType { get => comboBoxDishType.Text; set => comboBoxDishType.Text = value; }
         public string PreparationType { get => comboBoxPreparationType.Text; set => comboBoxPreparationType.Text = value; }
-        public string Location { get => comboBoxLocation.Text; set => comboBoxLocation.Text = value; }
+        public new string Location { get => comboBoxLocation.Text; set => comboBoxLocation.Text = value; }
 
         public DateTime Timestamp { get => dateTimePicker.Value; set => dateTimePicker.Value = value; }
         public int Rating { get => trackBarRating.Value; set => trackBarRating.Value = value; }

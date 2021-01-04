@@ -49,14 +49,14 @@
             // 
             this.trackBarIngredientImportance.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.trackBarIngredientImportance.LargeChange = 2;
             this.trackBarIngredientImportance.Location = new System.Drawing.Point(36, 30);
-            this.trackBarIngredientImportance.Maximum = 100;
             this.trackBarIngredientImportance.Minimum = 1;
             this.trackBarIngredientImportance.Name = "trackBarIngredientImportance";
             this.trackBarIngredientImportance.Size = new System.Drawing.Size(389, 45);
             this.trackBarIngredientImportance.TabIndex = 1;
             this.trackBarIngredientImportance.TickFrequency = 5;
-            this.trackBarIngredientImportance.Value = 50;
+            this.trackBarIngredientImportance.Value = 6;
             // 
             // checkBoxIngredientListItem
             // 

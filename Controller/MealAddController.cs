@@ -40,18 +40,60 @@ namespace OO_Seminar.Controller
 
         public void saveMealBtn()
         {
-            Meal meal = new Meal { Name = _view.MealName, Description = _view.Description, MealType = _view.MealType, Timestamp = _view.Timestamp, Rating = _view.Rating};
+            Meal meal = new Meal { Name = _view.MealName, Description = _view.Description, MealType = _view.MealType, Timestamp = _view.Timestamp, Rating = _view.Rating, Calories = _view.Calories, Price = _view.Price, DishType = _view.DishType, Location = _view.Location, PreparationType = _view.PreparationType, Ingredients = ingredients.ConvertAll(x => new MealIngredient { Ingredient = x.Ingredient, Importance = x.Importance })};
 
             Console.WriteLine("inserting meal: {0} {1} {2} {3} {4} {5} {6}", meal.Id, meal.Name, meal.Description, meal.DishType, meal.Timestamp, meal.Rating, meal.Calories);
 
-            DatabaseHelper.insertMeal(meal);
+            DatabaseHelper.InsertMeal(meal, _view.Image);
 
             _view.Close();
         }
 
         public void resetBtn()
         {
-            // set view params according to meal
+            if (_meal == null)
+            {
+                _view.MealName = "";
+                _view.Description = "";
+                _view.Timestamp = DateTime.Now;
+                _view.Rating = 6;
+                _view.Calories = 6;
+                _view.Price = 6;
+                _view.MealType = "";
+                _view.PreparationType = "";
+                _view.DishType = "";
+                _view.Location = "";
+                _view.Image = Properties.Resources.MealArt;
+
+                ingredients.Clear();
+                _view.SetIngredientListItems(ingredients.ToArray());
+            } else
+            {
+                _view.MealName = _meal.Name;
+                _view.Description = _meal?.Description ?? "";
+                _view.Timestamp = _meal.Timestamp;
+                _view.Rating = _meal?.Rating ?? 6;
+                _view.Calories = _meal?.Calories ?? 6;
+                _view.Price = _meal?.Price ?? 6;
+                _view.MealType = _meal?.MealType ?? "";
+                _view.PreparationType = _meal?.PreparationType ?? "";
+                _view.DishType = _meal?.DishType ?? "";
+                _view.Location = _meal?.Location ?? "";
+                _view.Image = _meal.Image == null ? Properties.Resources.MealArt : DatabaseHelper.GetMealImage(_meal.Image);
+
+                ingredients.Clear();
+                
+                foreach(var i in _meal.Ingredients)
+                {
+                    IngredientListItem ili = new IngredientListItem(new List<string>());
+                    ili.Ingredient = i.Ingredient;
+                    ili.Importance = i.Importance;
+
+                    ingredients.Add(ili);
+                }
+
+                _view.SetIngredientListItems(ingredients.ToArray());
+            }
         }
 
         public void chooseImageBtn()
@@ -70,7 +112,8 @@ namespace OO_Seminar.Controller
 
         public void addIngredientBtn()
         {
-            IngredientListItem ili = new IngredientListItem(new List<string> { "sunka", "sir", "jogurt", "maslac" });
+            IngredientListItem ili = new IngredientListItem(new List<string>());
+            
             ili.Dock = DockStyle.Top;
 
             ingredients.Add(ili);

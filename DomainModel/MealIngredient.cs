@@ -8,7 +8,7 @@ namespace OO_Seminar.DomainModel
 {
     public class MealIngredient
     {
-        public Ingredient Ingredient { get; set; }
-        public float Importance { get; set; }
+        public string Ingredient { get; set; }
+        public int Importance { get; set; }
     }
 }

@@ -16,7 +16,7 @@ namespace OO_Seminar.DomainModel
 
         public string MealType { get; set; }
         public string DishType { get; set; }
-        public string MealLocation { get; set; }
+        public string Location { get; set; }
         public string PreparationType { get; set; }
 
         public DateTime Timestamp { get; set; }

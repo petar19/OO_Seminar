@@ -20,6 +20,8 @@ namespace OO_Seminar.View
             comboBoxIngredientName.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             comboBoxIngredientName.AutoCompleteSource = AutoCompleteSource.ListItems;
             comboBoxIngredientName.DataSource = options;
+            comboBoxIngredientName.SelectedIndex = -1;
+
         }
 
         private void checkBoxIngredientListItem_CheckedChanged(object sender, EventArgs e)
@@ -27,5 +29,11 @@ namespace OO_Seminar.View
             if (checkBoxIngredientListItem.Checked) IsSelected = true;
             else IsSelected = false;
         }
+
+
+        public string Ingredient { get => comboBoxIngredientName.Text; set => comboBoxIngredientName.Text = value; }
+        public int Importance { get => trackBarIngredientImportance.Value; set => trackBarIngredientImportance.Value = value; }
+
     }
+
 }
