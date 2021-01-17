@@ -66,5 +66,45 @@ namespace OO_Seminar
             }
         }
 
+        public static void DeleteMeal(Meal meal)
+        {
+            using (var db = new LiteDatabase(@"MyData.db"))
+            {
+                var col = db.GetCollection<Meal>("meals");
+
+                col.Delete(meal.Id);
+
+                db.FileStorage.Delete(meal.Image);
+            }
+        }
+
+        public static void UpdateMeal(Meal meal, Image image)
+        {
+            using (var db = new LiteDatabase(@"MyData.db"))
+            {
+                if (image != null)
+                {
+                    db.FileStorage.Delete(meal.Image);
+
+                    string imgId = Guid.NewGuid().ToString();
+
+                    using (var stream = new MemoryStream())
+                    {
+                        image.Save(stream, image.RawFormat);
+
+                        stream.Position = 0;
+
+                        db.FileStorage.Upload(imgId, imgId, stream);
+                    }
+
+                    meal.Image = imgId;
+                }
+
+                var col = db.GetCollection<Meal>("meals");
+
+                col.Update(meal);
+            }
+        }
+
     }
 }

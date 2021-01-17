@@ -1,4 +1,5 @@
 ﻿using OO_Seminar.DomainModel;
+using OO_Seminar.DomainModel.Repositories;
 using OO_Seminar.View;
 using System;
 using System.Collections.Generic;
@@ -17,12 +18,17 @@ namespace OO_Seminar.Controller
 
         private List<IngredientListItem> ingredients;
 
-        public MealAddController(IMealAddView view)
+        private IMealRepository _mealRepository;
+
+
+        public MealAddController(IMealAddView view, IMealRepository mealRepository)
         {
             _view = view;
             _view.SetController(this);
 
             _view.Image = Properties.Resources.MealArt;
+
+            _mealRepository = mealRepository;
 
             ingredients = new List<IngredientListItem>();
         }
@@ -44,7 +50,7 @@ namespace OO_Seminar.Controller
 
             Console.WriteLine("inserting meal: {0} {1} {2} {3} {4} {5} {6}", meal.Id, meal.Name, meal.Description, meal.DishType, meal.Timestamp, meal.Rating, meal.Calories);
 
-            DatabaseHelper.InsertMeal(meal, _view.Image);
+            _mealRepository.AddMeal(meal, _view.Image);
 
             _view.Close();
         }

@@ -1,4 +1,5 @@
 ﻿using OO_Seminar.DomainModel;
+using OO_Seminar.DomainModel.Repositories;
 using OO_Seminar.View;
 using System;
 using System.Collections.Generic;
@@ -11,10 +12,14 @@ namespace OO_Seminar.Controller
     public class MainController
     {
         private IMainView _view;
-        public MainController(IMainView view)
+        private IMealRepository _mealRepository;
+
+        public MainController(IMainView view, IMealRepository mealRepository)
         {
             _view = view;
             _view.SetController(this);
+
+            _mealRepository = mealRepository;
 
             refreshMealList();
         }
@@ -22,7 +27,7 @@ namespace OO_Seminar.Controller
         public void addNewMeal()
         {
             MealAddForm mealAddForm = new MealAddForm();
-            MealAddController mealAddController = new MealAddController(mealAddForm);
+            MealAddController mealAddController = new MealAddController(mealAddForm, _mealRepository);
 
             mealAddForm.ShowDialog();
             refreshMealList();
@@ -32,7 +37,7 @@ namespace OO_Seminar.Controller
         {
             _view.Clear();
 
-            List<Meal> meals = DatabaseHelper.GetAllMeals();
+            List<Meal> meals = _mealRepository.GetAllMeals();
 
             Console.WriteLine("refershing meal list");
             

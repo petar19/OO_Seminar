@@ -1,4 +1,5 @@
 ﻿using OO_Seminar.Controller;
+using OO_Seminar.RepositoriesImpl;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,8 +18,11 @@ namespace OO_Seminar
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            MealRepository mealRepository = MealRepository.getInstance();
+
             MainForm mainForm = new MainForm();
-            MainController mainController = new MainController(mainForm);
+            MainController mainController = new MainController(mainForm, mealRepository);
 
             mainForm.ShowDialog();
         }
