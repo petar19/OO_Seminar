@@ -16,6 +16,12 @@ namespace OO_Seminar.View
 
         void SetIngredientListItems(IngredientListItem[] ingredientListItems);
 
+        void SetMealTypeOptions(List<string> options);
+        void SetLocationOptions(List<string> options);
+        void SetDishTypeOptions(List<string> options);
+        void SetPreparationTypeOptions(List<string> options);
+
+
         string MealName { get; set; }
         string Description { get; set; }
         string MealType { get; set; }

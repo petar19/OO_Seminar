@@ -31,6 +31,17 @@ namespace OO_Seminar.Controller
             _mealRepository = mealRepository;
 
             ingredients = new List<IngredientListItem>();
+
+            InitializeComboBoxOptions();
+        }
+
+        private void InitializeComboBoxOptions()
+        {
+            _view.SetMealTypeOptions(_mealRepository.GetAllMealTypes());
+            _view.SetLocationOptions(_mealRepository.GetAllLocations());
+            _view.SetDishTypeOptions(_mealRepository.GetAllDishTypes());
+            _view.SetPreparationTypeOptions(_mealRepository.GetAllPreparationTypes());
+
         }
 
         public MealAddController(IMealAddView view, Meal meal)

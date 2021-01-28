@@ -226,15 +226,7 @@
             this.comboBoxPreparationType.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBoxPreparationType.AutoCompleteCustomSource.AddRange(new string[] {
-            "Breakfast",
-            "Brunch",
-            "Lunch",
-            "Tea",
-            "Dinner",
-            "Supper",
-            "Other"});
-            this.comboBoxPreparationType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboBoxPreparationType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.comboBoxPreparationType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.comboBoxPreparationType.FormattingEnabled = true;
             this.comboBoxPreparationType.Location = new System.Drawing.Point(6, 29);
@@ -257,15 +249,7 @@
             this.comboBoxLocation.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBoxLocation.AutoCompleteCustomSource.AddRange(new string[] {
-            "Breakfast",
-            "Brunch",
-            "Lunch",
-            "Tea",
-            "Dinner",
-            "Supper",
-            "Other"});
-            this.comboBoxLocation.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboBoxLocation.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.comboBoxLocation.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.comboBoxLocation.FormattingEnabled = true;
             this.comboBoxLocation.Location = new System.Drawing.Point(6, 29);
@@ -288,15 +272,7 @@
             this.comboBoxDishType.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBoxDishType.AutoCompleteCustomSource.AddRange(new string[] {
-            "Breakfast",
-            "Brunch",
-            "Lunch",
-            "Tea",
-            "Dinner",
-            "Supper",
-            "Other"});
-            this.comboBoxDishType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboBoxDishType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.comboBoxDishType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.comboBoxDishType.FormattingEnabled = true;
             this.comboBoxDishType.Location = new System.Drawing.Point(6, 29);
@@ -364,15 +340,7 @@
             this.comboBoxMealType.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBoxMealType.AutoCompleteCustomSource.AddRange(new string[] {
-            "Breakfast",
-            "Brunch",
-            "Lunch",
-            "Tea",
-            "Dinner",
-            "Supper",
-            "Other"});
-            this.comboBoxMealType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboBoxMealType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.comboBoxMealType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.comboBoxMealType.FormattingEnabled = true;
             this.comboBoxMealType.Location = new System.Drawing.Point(6, 29);

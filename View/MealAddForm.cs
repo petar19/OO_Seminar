@@ -59,6 +59,35 @@ namespace OO_Seminar
             _controller.chooseImageBtn();
         }
 
+
+        public void SetMealTypeOptions(List<string> options)
+        {
+            comboBoxMealType.AutoCompleteSource = AutoCompleteSource.ListItems;
+            comboBoxMealType.DataSource = options;
+            comboBoxMealType.SelectedIndex = -1;
+        }
+
+        public void SetLocationOptions(List<string> options)
+        {
+            comboBoxLocation.AutoCompleteSource = AutoCompleteSource.ListItems;
+            comboBoxLocation.DataSource = options;
+            comboBoxLocation.SelectedIndex = -1;
+        }
+
+        public void SetDishTypeOptions(List<string> options)
+        {
+            comboBoxDishType.AutoCompleteSource = AutoCompleteSource.ListItems;
+            comboBoxDishType.DataSource = options;
+            comboBoxDishType.SelectedIndex = -1;
+        }
+
+        public void SetPreparationTypeOptions(List<string> options)
+        {
+            comboBoxPreparationType.AutoCompleteSource = AutoCompleteSource.ListItems;
+            comboBoxPreparationType.DataSource = options;
+            comboBoxPreparationType.SelectedIndex = -1;
+        }
+
         public string MealName { get => comboBoxName.Text; set => comboBoxName.Text = value; }
         public string Description { get => richTextBoxDescription.Text; set => richTextBoxDescription.Text = value; }
         public string MealType { get => comboBoxMealType.Text; set => comboBoxMealType.Text = value; }

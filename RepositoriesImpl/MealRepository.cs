@@ -13,11 +13,22 @@ namespace OO_Seminar.RepositoriesImpl
     {
         List<Meal> meals;
 
+        HashSet<string> mealTypes;
+        HashSet<string> locations;
+        HashSet<string> dishTypes;
+        HashSet<string> preparationTypes;
+
+
         private static MealRepository _instance;
 
         private MealRepository()
         {
             meals = DatabaseHelper.GetAllMeals();
+            mealTypes = DatabaseHelper.GetAllMealTypes().ToHashSet();
+            locations = DatabaseHelper.GetAllLocations().ToHashSet();
+            dishTypes = DatabaseHelper.GetAllDishTypes().ToHashSet();
+            preparationTypes = DatabaseHelper.GetAllPreparationTypes().ToHashSet();
+
         }
 
         public static MealRepository getInstance()
@@ -31,6 +42,35 @@ namespace OO_Seminar.RepositoriesImpl
 
             meals.Add(meal);
             DatabaseHelper.InsertMeal(meal, image);
+            UpdateSuggestions(meal);
+
+        }
+
+        private void UpdateSuggestions(Meal meal)
+        {
+            if (!mealTypes.Contains(meal.MealType))
+            {
+                DatabaseHelper.InsertMealType(meal.MealType);
+                mealTypes.Add(meal.MealType);
+            }
+
+            if (!locations.Contains(meal.Location))
+            {
+                DatabaseHelper.InsertMealType(meal.Location);
+                locations.Add(meal.Location);
+            }
+
+            if (!dishTypes.Contains(meal.DishType))
+            {
+                DatabaseHelper.InsertMealType(meal.DishType);
+                dishTypes.Add(meal.DishType);
+            }
+
+            if (!preparationTypes.Contains(meal.PreparationType))
+            {
+                DatabaseHelper.InsertMealType(meal.PreparationType);
+                preparationTypes.Add(meal.PreparationType);
+            }
         }
 
         public void AddMeal(Meal meal)
@@ -49,6 +89,26 @@ namespace OO_Seminar.RepositoriesImpl
         public List<Meal> GetAllMeals()
         {
             return meals;
+        }
+
+        public List<string> GetAllMealTypes()
+        {
+            return mealTypes.ToList();
+        }
+
+        public List<string> GetAllLocations()
+        {
+            return locations.ToList();
+        }
+
+        public List<string> GetAllDishTypes()
+        {
+            return dishTypes.ToList();
+        }
+
+        public List<string> GetAllPreparationTypes()
+        {
+            return preparationTypes.ToList();
         }
 
         public Meal GetMealById(int Id)
@@ -103,12 +163,19 @@ namespace OO_Seminar.RepositoriesImpl
 
         public void UpdateMeal(Meal meal, Image image)
         {
-            DatabaseHelper.UpdateMeal(meal, image);
+            var i = meals.FindIndex(m => m.Id == meal.Id);
+            if (i != -1)
+            {
+                meals[i] = meal;
+                DatabaseHelper.UpdateMeal(meal, image);
+                // TODO Update image
+            }
+            
         }
 
         public void UpdateMeal(Meal meal)
         {
-            DatabaseHelper.UpdateMeal(meal, null);
+            UpdateMeal(meal, null);
 
         }
     }

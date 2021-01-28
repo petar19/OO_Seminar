@@ -106,5 +106,101 @@ namespace OO_Seminar
             }
         }
 
+        public static IEnumerable<string> GetAllMealTypes()
+        {
+            using (var db = new LiteDatabase(@"MyData.db"))
+            {
+                var col = db.GetCollection("mealTypes");
+
+                foreach(var doc in col.FindAll())
+                {
+                    yield return doc["value"].AsString;
+                }
+            }
+        }
+
+        public static void InsertMealType(string mealType)
+        {
+            using (var db = new LiteDatabase(@"MyData.db"))
+            {
+                var col = db.GetCollection("mealTypes");
+
+                col.Insert(new BsonDocument { ["value"] = mealType });
+
+            }
+        }
+
+        public static IEnumerable<string> GetAllDishTypes()
+        {
+            using (var db = new LiteDatabase(@"MyData.db"))
+            {
+                var col = db.GetCollection("dishTypes");
+
+                foreach (var doc in col.FindAll())
+                {
+                    yield return doc["value"].AsString;
+                }
+            }
+        }
+
+        public static void InsertDishType(string dishType)
+        {
+            using (var db = new LiteDatabase(@"MyData.db"))
+            {
+                var col = db.GetCollection("dishTypes");
+
+                col.Insert(new BsonDocument { ["value"] = dishType });
+
+            }
+        }
+
+        public static IEnumerable<string> GetAllLocations()
+        {
+            using (var db = new LiteDatabase(@"MyData.db"))
+            {
+                var col = db.GetCollection("locations");
+
+                foreach (var doc in col.FindAll())
+                {
+                    yield return doc["value"].AsString;
+                }
+            }
+        }
+
+        public static void InsertLocation(string location)
+        {
+            using (var db = new LiteDatabase(@"MyData.db"))
+            {
+                var col = db.GetCollection("locations");
+
+                col.Insert(new BsonDocument { ["value"] = location });
+
+            }
+        }
+
+        public static IEnumerable<string> GetAllPreparationTypes()
+        {
+            using (var db = new LiteDatabase(@"MyData.db"))
+            {
+                var col = db.GetCollection("preparationTypes");
+
+                foreach (var doc in col.FindAll())
+                {
+                    yield return doc["value"].AsString;
+                }
+            }
+        }
+
+        public static void InsertPreparationType(string preparationType)
+        {
+            using (var db = new LiteDatabase(@"MyData.db"))
+            {
+                var col = db.GetCollection("preparationTypes");
+
+                col.Insert(new BsonDocument { ["value"] = preparationType });
+
+            }
+        }
+
     }
 }

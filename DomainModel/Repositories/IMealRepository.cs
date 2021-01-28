@@ -30,5 +30,12 @@ namespace OO_Seminar.DomainModel.Repositories
 
         Meal GetMealById(int Id);
 
+
+        List<string> GetAllMealTypes();
+        List<string> GetAllLocations();
+        List<string> GetAllDishTypes();
+        List<string> GetAllPreparationTypes();
+
+
     }
 }
