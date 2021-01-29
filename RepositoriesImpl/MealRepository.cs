@@ -19,6 +19,8 @@ namespace OO_Seminar.RepositoriesImpl
         HashSet<string> preparationTypes;
         HashSet<string> ingredients;
 
+        List<IObserver> observers;
+
 
 
         private static MealRepository _instance;
@@ -31,6 +33,8 @@ namespace OO_Seminar.RepositoriesImpl
             dishTypes = DatabaseHelper.GetAllDishTypes().ToHashSet();
             preparationTypes = DatabaseHelper.GetAllPreparationTypes().ToHashSet();
             ingredients = DatabaseHelper.GetAllIngredients().ToHashSet();
+
+            observers = new List<IObserver>();
         }
 
         public static MealRepository getInstance()
@@ -38,6 +42,11 @@ namespace OO_Seminar.RepositoriesImpl
             return _instance ?? (_instance = new MealRepository());
         }
 
+        public void AddMeal(Meal meal)
+        {
+            var image = Properties.Resources.MealArt;
+            AddMeal(meal, image);
+        }
 
         public void AddMeal(Meal meal, Image image)
         {
@@ -45,6 +54,7 @@ namespace OO_Seminar.RepositoriesImpl
             meals.Add(meal);
             DatabaseHelper.InsertMeal(meal, image);
             UpdateSuggestions(meal);
+            Notify();
 
         }
 
@@ -58,19 +68,19 @@ namespace OO_Seminar.RepositoriesImpl
 
             if (!locations.Contains(meal.Location))
             {
-                DatabaseHelper.InsertMealType(meal.Location);
+                DatabaseHelper.InsertLocation(meal.Location);
                 locations.Add(meal.Location);
             }
 
             if (!dishTypes.Contains(meal.DishType))
             {
-                DatabaseHelper.InsertMealType(meal.DishType);
+                DatabaseHelper.InsertDishType(meal.DishType);
                 dishTypes.Add(meal.DishType);
             }
 
             if (!preparationTypes.Contains(meal.PreparationType))
             {
-                DatabaseHelper.InsertMealType(meal.PreparationType);
+                DatabaseHelper.InsertPreparationType(meal.PreparationType);
                 preparationTypes.Add(meal.PreparationType);
             }
 
@@ -91,16 +101,13 @@ namespace OO_Seminar.RepositoriesImpl
             }
         }
 
-        public void AddMeal(Meal meal)
-        {
-            var image = Properties.Resources.MealArt;
-            AddMeal(meal, image);
-        }
+        
 
         public void DeleteMeal(Meal meal)
         {
             meals.Remove(meal);
             DatabaseHelper.DeleteMeal(meal);
+            Notify();
 
         }
 
@@ -193,13 +200,31 @@ namespace OO_Seminar.RepositoriesImpl
                 DatabaseHelper.UpdateMeal(meal, image);
                 // TODO Update image
             }
+            Notify();
             
         }
 
         public void UpdateMeal(Meal meal)
         {
             UpdateMeal(meal, null);
+        }
 
+        public void Attach(IObserver observer)
+        {
+            observers.Add(observer);
+        }
+
+        public void Detach(IObserver observer)
+        {
+            observers.Remove(observer);
+        }
+
+        public void Notify()
+        {
+            foreach(var o in observers)
+            {
+                o.Update();
+            }
         }
     }
 }

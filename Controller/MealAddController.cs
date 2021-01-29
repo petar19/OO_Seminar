@@ -142,7 +142,7 @@ namespace OO_Seminar.Controller
 
             mealIngredientListItems.Add(ili);
 
-            mealIngredientListItems.Reverse();
+            //mealIngredientListItems.Reverse();
             _view.SetIngredientListItems(mealIngredientListItems.ToArray());
         }
 

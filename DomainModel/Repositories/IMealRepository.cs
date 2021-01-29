@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OO_Seminar.DomainModel.Repositories
 {
-    public interface IMealRepository
+    public interface IMealRepository : IObservable
     {
         void AddMeal(Meal meal, Image image);
         void AddMeal(Meal meal);
@@ -36,7 +36,6 @@ namespace OO_Seminar.DomainModel.Repositories
         List<string> GetAllDishTypes();
         List<string> GetAllPreparationTypes();
         List<string> GetAllIngredients();
-
 
 
     }

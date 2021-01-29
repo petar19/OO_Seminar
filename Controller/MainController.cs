@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace OO_Seminar.Controller
 {
-    public class MainController
+    public class MainController : IObserver
     {
         private IMainView _view;
         private IMealRepository _mealRepository;
@@ -21,6 +21,14 @@ namespace OO_Seminar.Controller
 
             _mealRepository = mealRepository;
 
+            _mealRepository.Attach(this);
+
+            refreshMealList();
+
+
+        }
+        public void Update()
+        {
             refreshMealList();
         }
 
@@ -30,8 +38,8 @@ namespace OO_Seminar.Controller
             MealAddController mealAddController = new MealAddController(mealAddForm, _mealRepository);
 
             mealAddForm.ShowDialog();
-            refreshMealList();
         }
+
 
         private void refreshMealList()
         {

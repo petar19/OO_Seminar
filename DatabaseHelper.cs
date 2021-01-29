@@ -12,7 +12,7 @@ namespace OO_Seminar
 {
     public class DatabaseHelper
     {
-        private static string database = "MyData2.db";
+        private static string database = "MyData3.db";
         public static void InsertMeal(Meal meal, Image image)
         {
             using (var db = new LiteDatabase(@database))
