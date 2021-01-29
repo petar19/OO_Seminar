@@ -50,10 +50,6 @@ namespace OO_Seminar
             Text = "Update a meal";
         }
 
-        private void mealNameTextBox_TextChanged(object sender, EventArgs e)
-        {
-            _controller.mealNameChanged();
-        }
         private void buttonChooseImage_Click(object sender, EventArgs e)
         {
             _controller.chooseImageBtn();
@@ -116,6 +112,17 @@ namespace OO_Seminar
         private void buttonRemoveIngredient_Click(object sender, EventArgs e)
         {
             _controller.removeIngredientBtn();
+        }
+
+        public void EnableConfirmBtn(bool enabled)
+        {
+            confirmBtn.Enabled = enabled;
+        }
+
+        private void comboBoxName_TextChanged(object sender, EventArgs e)
+        {
+            _controller.OnMealNameChanged();
+
         }
     }
 }

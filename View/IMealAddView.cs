@@ -23,6 +23,8 @@ namespace OO_Seminar.View
 
         void SetToUpdateMode();
 
+        void EnableConfirmBtn(bool enabled);
+
 
         string MealName { get; set; }
         string Description { get; set; }

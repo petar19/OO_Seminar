@@ -426,6 +426,7 @@
             this.comboBoxName.Name = "comboBoxName";
             this.comboBoxName.Size = new System.Drawing.Size(1108, 21);
             this.comboBoxName.TabIndex = 3;
+            this.comboBoxName.TextChanged += new System.EventHandler(this.comboBoxName_TextChanged);
             // 
             // groupBox11
             // 

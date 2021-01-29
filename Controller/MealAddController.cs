@@ -42,6 +42,7 @@ namespace OO_Seminar.Controller
         {
             _view = view;
             _view.SetController(this);
+            _view.EnableConfirmBtn(false);
             _mealRepository = mealRepository;
             ingredientsSuggestions = _mealRepository.GetAllIngredients();
             InitializeComboBoxOptions();
@@ -60,9 +61,16 @@ namespace OO_Seminar.Controller
         }
 
 
-        public void mealNameChanged()
+        public void OnMealNameChanged()
         {
-
+            Console.WriteLine($"meal name changed to: {_view.MealName}");
+            if (_view.MealName.Length == 0)
+            {
+                _view.EnableConfirmBtn(false);
+            } else
+            {
+                _view.EnableConfirmBtn(true);
+            }
         }
 
         public void saveMealBtn()
