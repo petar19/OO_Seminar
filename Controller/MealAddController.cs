@@ -64,7 +64,7 @@ namespace OO_Seminar.Controller
         public void OnMealNameChanged()
         {
             Console.WriteLine($"meal name changed to: {_view.MealName}");
-            if (_view.MealName.Length == 0)
+            if (string.IsNullOrWhiteSpace(_view.MealName))
             {
                 _view.EnableConfirmBtn(false);
             } else
@@ -75,7 +75,8 @@ namespace OO_Seminar.Controller
 
         public void saveMealBtn()
         {
-            var ingredients = mealIngredientListItems.Where(x => !string.IsNullOrEmpty(x.Ingredient)).Select(x => new MealIngredient { Ingredient = x.Ingredient, Importance = x.Importance }).GroupBy(x => x.Ingredient).Select(x => x.First()).ToList();
+            var ingredients = mealIngredientListItems.Where(x => !string.IsNullOrWhiteSpace(x.Ingredient)).Select(x => new MealIngredient { Ingredient = x.Ingredient, Importance = x.Importance }).GroupBy(x => x.Ingredient).Select(x => x.First()).ToList(); // first filter out ones with empty string
+
             Meal meal = new Meal { Name = _view.MealName, Description = _view.Description, MealType = _view.MealType, Timestamp = _view.Timestamp, Rating = _view.Rating, Calories = _view.Calories, Price = _view.Price, DishType = _view.DishType, Location = _view.Location, PreparationType = _view.PreparationType, Ingredients = ingredients};
 
             if (_meal == null) { // ADDING A NEW MEAL

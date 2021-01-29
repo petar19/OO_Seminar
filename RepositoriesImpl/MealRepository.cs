@@ -200,7 +200,7 @@ namespace OO_Seminar.RepositoriesImpl
             {
                 meals[i] = meal;
                 DatabaseHelper.UpdateMeal(meal, image);
-                // TODO Update image
+                UpdateSuggestions(meal);
             }
             Notify();
             
