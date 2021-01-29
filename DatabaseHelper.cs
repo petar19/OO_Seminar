@@ -12,9 +12,10 @@ namespace OO_Seminar
 {
     public class DatabaseHelper
     {
+        private static string database = "MyData2.db";
         public static void InsertMeal(Meal meal, Image image)
         {
-            using (var db = new LiteDatabase(@"MyData.db"))
+            using (var db = new LiteDatabase(@database))
             {
                 if (image != null)
                 {
@@ -43,7 +44,7 @@ namespace OO_Seminar
 
         public static Image GetMealImage(string imgId)
         {
-            using (var db = new LiteDatabase(@"MyData.db"))
+            using (var db = new LiteDatabase(@database))
             {
                 using (var stream = new MemoryStream())
                 {
@@ -55,7 +56,7 @@ namespace OO_Seminar
 
         public static List<Meal> GetAllMeals()
         {
-            using (var db = new LiteDatabase(@"MyData.db"))
+            using (var db = new LiteDatabase(@database))
             {
                 var col = db.GetCollection<Meal>("meals");
 
@@ -68,7 +69,7 @@ namespace OO_Seminar
 
         public static void DeleteMeal(Meal meal)
         {
-            using (var db = new LiteDatabase(@"MyData.db"))
+            using (var db = new LiteDatabase(@database))
             {
                 var col = db.GetCollection<Meal>("meals");
 
@@ -80,7 +81,7 @@ namespace OO_Seminar
 
         public static void UpdateMeal(Meal meal, Image image)
         {
-            using (var db = new LiteDatabase(@"MyData.db"))
+            using (var db = new LiteDatabase(@database))
             {
                 if (image != null)
                 {
@@ -108,7 +109,7 @@ namespace OO_Seminar
 
         public static IEnumerable<string> GetAllMealTypes()
         {
-            using (var db = new LiteDatabase(@"MyData.db"))
+            using (var db = new LiteDatabase(@database))
             {
                 var col = db.GetCollection("mealTypes");
 
@@ -121,7 +122,7 @@ namespace OO_Seminar
 
         public static void InsertMealType(string mealType)
         {
-            using (var db = new LiteDatabase(@"MyData.db"))
+            using (var db = new LiteDatabase(@database))
             {
                 var col = db.GetCollection("mealTypes");
 
@@ -132,7 +133,7 @@ namespace OO_Seminar
 
         public static IEnumerable<string> GetAllDishTypes()
         {
-            using (var db = new LiteDatabase(@"MyData.db"))
+            using (var db = new LiteDatabase(@database))
             {
                 var col = db.GetCollection("dishTypes");
 
@@ -145,7 +146,7 @@ namespace OO_Seminar
 
         public static void InsertDishType(string dishType)
         {
-            using (var db = new LiteDatabase(@"MyData.db"))
+            using (var db = new LiteDatabase(@database))
             {
                 var col = db.GetCollection("dishTypes");
 
@@ -156,7 +157,7 @@ namespace OO_Seminar
 
         public static IEnumerable<string> GetAllLocations()
         {
-            using (var db = new LiteDatabase(@"MyData.db"))
+            using (var db = new LiteDatabase(@database))
             {
                 var col = db.GetCollection("locations");
 
@@ -169,7 +170,7 @@ namespace OO_Seminar
 
         public static void InsertLocation(string location)
         {
-            using (var db = new LiteDatabase(@"MyData.db"))
+            using (var db = new LiteDatabase(@database))
             {
                 var col = db.GetCollection("locations");
 
@@ -180,7 +181,7 @@ namespace OO_Seminar
 
         public static IEnumerable<string> GetAllPreparationTypes()
         {
-            using (var db = new LiteDatabase(@"MyData.db"))
+            using (var db = new LiteDatabase(@database))
             {
                 var col = db.GetCollection("preparationTypes");
 
@@ -193,12 +194,45 @@ namespace OO_Seminar
 
         public static void InsertPreparationType(string preparationType)
         {
-            using (var db = new LiteDatabase(@"MyData.db"))
+            using (var db = new LiteDatabase(@database))
             {
                 var col = db.GetCollection("preparationTypes");
 
                 col.Insert(new BsonDocument { ["value"] = preparationType });
 
+            }
+        }
+
+        public static IEnumerable<string> GetAllIngredients()
+        {
+            using (var db = new LiteDatabase(@database))
+            {
+                var col = db.GetCollection("ingredients");
+
+                foreach (var doc in col.FindAll())
+                {
+                    yield return doc["value"].AsString;
+                }
+            }
+        }
+
+        public static void InsertIngredient(string ingredient)
+        {
+            using (var db = new LiteDatabase(@database))
+            {
+                var col = db.GetCollection("ingredients");
+
+                col.Insert(new BsonDocument { ["value"] = ingredient });
+            }
+        }
+
+        public static void InsertIngredients(List<string> ingredients)
+        {
+            using (var db = new LiteDatabase(@database))
+            {
+                var col = db.GetCollection("ingredients");
+
+                col.InsertBulk(ingredients.ConvertAll(i => new BsonDocument { ["value"] = i }));
             }
         }
 

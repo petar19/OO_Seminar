@@ -20,7 +20,7 @@ namespace OO_Seminar.View
 
         public void SetIngredients(List<MealIngredient> ingredients)
         {
-            foreach(MealIngredient i in ingredients)
+            foreach(MealIngredient i in ingredients.OrderByDescending(i => i.Importance))
             {
                 ListViewItem item = new ListViewItem(i.Ingredient);
                 item.SubItems.Add(i.Importance.ToString());

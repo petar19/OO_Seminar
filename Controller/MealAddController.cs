@@ -16,9 +16,11 @@ namespace OO_Seminar.Controller
         private IMealAddView _view;
         private Meal _meal;
 
-        private List<IngredientListItem> ingredients;
+        private List<IngredientListItem> mealIngredientListItems;
 
         private IMealRepository _mealRepository;
+
+        private List<string> ingredientsSuggestions;
 
 
         public MealAddController(IMealAddView view, IMealRepository mealRepository)
@@ -30,7 +32,9 @@ namespace OO_Seminar.Controller
 
             _mealRepository = mealRepository;
 
-            ingredients = new List<IngredientListItem>();
+            mealIngredientListItems = new List<IngredientListItem>();
+
+            ingredientsSuggestions = _mealRepository.GetAllIngredients();
 
             InitializeComboBoxOptions();
         }
@@ -57,9 +61,8 @@ namespace OO_Seminar.Controller
 
         public void saveMealBtn()
         {
-            Meal meal = new Meal { Name = _view.MealName, Description = _view.Description, MealType = _view.MealType, Timestamp = _view.Timestamp, Rating = _view.Rating, Calories = _view.Calories, Price = _view.Price, DishType = _view.DishType, Location = _view.Location, PreparationType = _view.PreparationType, Ingredients = ingredients.ConvertAll(x => new MealIngredient { Ingredient = x.Ingredient, Importance = x.Importance })};
+            Meal meal = new Meal { Name = _view.MealName, Description = _view.Description, MealType = _view.MealType, Timestamp = _view.Timestamp, Rating = _view.Rating, Calories = _view.Calories, Price = _view.Price, DishType = _view.DishType, Location = _view.Location, PreparationType = _view.PreparationType, Ingredients = mealIngredientListItems.ConvertAll(x => new MealIngredient { Ingredient = x.Ingredient, Importance = x.Importance })};
 
-            Console.WriteLine("inserting meal: {0} {1} {2} {3} {4} {5} {6}", meal.Id, meal.Name, meal.Description, meal.DishType, meal.Timestamp, meal.Rating, meal.Calories);
 
             _mealRepository.AddMeal(meal, _view.Image);
 
@@ -82,8 +85,8 @@ namespace OO_Seminar.Controller
                 _view.Location = "";
                 _view.Image = Properties.Resources.MealArt;
 
-                ingredients.Clear();
-                _view.SetIngredientListItems(ingredients.ToArray());
+                mealIngredientListItems.Clear();
+                _view.SetIngredientListItems(mealIngredientListItems.ToArray());
             } else
             {
                 _view.MealName = _meal.Name;
@@ -98,18 +101,18 @@ namespace OO_Seminar.Controller
                 _view.Location = _meal?.Location ?? "";
                 _view.Image = _meal.Image == null ? Properties.Resources.MealArt : DatabaseHelper.GetMealImage(_meal.Image);
 
-                ingredients.Clear();
+                mealIngredientListItems.Clear();
                 
                 foreach(var i in _meal.Ingredients)
                 {
-                    IngredientListItem ili = new IngredientListItem(new List<string>());
+                    IngredientListItem ili = new IngredientListItem(new List<string>()); // TODO ADD SUGGESTIONS BUT FILTER OUT ONES THAT ARE ALREADY IN LIST
                     ili.Ingredient = i.Ingredient;
                     ili.Importance = i.Importance;
 
-                    ingredients.Add(ili);
+                    mealIngredientListItems.Add(ili);
                 }
 
-                _view.SetIngredientListItems(ingredients.ToArray());
+                _view.SetIngredientListItems(mealIngredientListItems.ToArray());
             }
         }
 
@@ -129,22 +132,26 @@ namespace OO_Seminar.Controller
 
         public void addIngredientBtn()
         {
-            IngredientListItem ili = new IngredientListItem(new List<string>());
+            var currentlyAddedIngredients = mealIngredientListItems.ConvertAll(i => i.Ingredient); // List of strings of currently added ingredients
+            var possibleIngredients = new List<string>(ingredientsSuggestions); // copy of ingredients suggestions
+            possibleIngredients.RemoveAll(i => currentlyAddedIngredients.Contains(i)); // filter out currently added ingredients so suggestions don't repeat
+
+            IngredientListItem ili = new IngredientListItem(possibleIngredients);
             
             ili.Dock = DockStyle.Top;
 
-            ingredients.Add(ili);
+            mealIngredientListItems.Add(ili);
 
-            ingredients.Reverse();
-            _view.SetIngredientListItems(ingredients.ToArray());
+            mealIngredientListItems.Reverse();
+            _view.SetIngredientListItems(mealIngredientListItems.ToArray());
         }
 
         public void removeIngredientBtn()
         {
-            ingredients.RemoveAll(x => x.IsSelected);
+            mealIngredientListItems.RemoveAll(x => x.IsSelected);
 
-            ingredients.Reverse();
-            _view.SetIngredientListItems(ingredients.ToArray());
+            mealIngredientListItems.Reverse();
+            _view.SetIngredientListItems(mealIngredientListItems.ToArray());
         }
 
     }

@@ -17,6 +17,8 @@ namespace OO_Seminar.RepositoriesImpl
         HashSet<string> locations;
         HashSet<string> dishTypes;
         HashSet<string> preparationTypes;
+        HashSet<string> ingredients;
+
 
 
         private static MealRepository _instance;
@@ -28,7 +30,7 @@ namespace OO_Seminar.RepositoriesImpl
             locations = DatabaseHelper.GetAllLocations().ToHashSet();
             dishTypes = DatabaseHelper.GetAllDishTypes().ToHashSet();
             preparationTypes = DatabaseHelper.GetAllPreparationTypes().ToHashSet();
-
+            ingredients = DatabaseHelper.GetAllIngredients().ToHashSet();
         }
 
         public static MealRepository getInstance()
@@ -71,6 +73,22 @@ namespace OO_Seminar.RepositoriesImpl
                 DatabaseHelper.InsertMealType(meal.PreparationType);
                 preparationTypes.Add(meal.PreparationType);
             }
+
+            List<string> newIngredients = new List<string>();
+
+            foreach(var mealIngredient in meal.Ingredients)
+            {
+                if (!ingredients.Contains(mealIngredient.Ingredient))
+                {
+                    newIngredients.Add(mealIngredient.Ingredient);
+                }
+            }
+
+            if (newIngredients.Count > 0)
+            {
+                ingredients.UnionWith(newIngredients);
+                DatabaseHelper.InsertIngredients(newIngredients);
+            }
         }
 
         public void AddMeal(Meal meal)
@@ -109,6 +127,11 @@ namespace OO_Seminar.RepositoriesImpl
         public List<string> GetAllPreparationTypes()
         {
             return preparationTypes.ToList();
+        }
+
+        public List<string> GetAllIngredients()
+        {
+            return ingredients.ToList();
         }
 
         public Meal GetMealById(int Id)

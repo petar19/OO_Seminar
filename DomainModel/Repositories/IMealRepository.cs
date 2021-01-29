@@ -35,6 +35,8 @@ namespace OO_Seminar.DomainModel.Repositories
         List<string> GetAllLocations();
         List<string> GetAllDishTypes();
         List<string> GetAllPreparationTypes();
+        List<string> GetAllIngredients();
+
 
 
     }

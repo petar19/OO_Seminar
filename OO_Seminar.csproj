@@ -54,14 +54,8 @@
     <Compile Include="Controller\MainController.cs" />
     <Compile Include="Controller\MealAddController.cs" />
     <Compile Include="DatabaseHelper.cs" />
-    <Compile Include="DomainModel\DishType.cs" />
-    <Compile Include="DomainModel\Ingredient.cs" />
-    <Compile Include="DomainModel\IngredientCategory.cs" />
     <Compile Include="DomainModel\Meal.cs" />
     <Compile Include="DomainModel\MealIngredient.cs" />
-    <Compile Include="DomainModel\MealLocation.cs" />
-    <Compile Include="DomainModel\MealType.cs" />
-    <Compile Include="DomainModel\PreparationType.cs" />
     <Compile Include="DomainModel\Repositories\IMealRepository.cs" />
     <Compile Include="RepositoriesImpl\MealRepository.cs" />
     <Compile Include="View\IMainView.cs" />
