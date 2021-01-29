@@ -21,6 +21,8 @@ namespace OO_Seminar.View
         void SetDishTypeOptions(List<string> options);
         void SetPreparationTypeOptions(List<string> options);
 
+        void SetToUpdateMode();
+
 
         string MealName { get; set; }
         string Description { get; set; }

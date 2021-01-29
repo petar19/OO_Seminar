@@ -22,22 +22,33 @@ namespace OO_Seminar.Controller
 
         private List<string> ingredientsSuggestions;
 
+        private bool imageChanged;
+
 
         public MealAddController(IMealAddView view, IMealRepository mealRepository)
         {
+            Init(view, mealRepository);
+
+        }
+
+        public MealAddController(IMealAddView view, IMealRepository mealRepository, Meal meal)
+        {
+            _meal = meal;
+            Init(view, mealRepository);
+            _view.SetToUpdateMode();
+        }
+
+        private void Init(IMealAddView view, IMealRepository mealRepository)
+        {
             _view = view;
             _view.SetController(this);
-
-            _view.Image = Properties.Resources.MealArt;
-
             _mealRepository = mealRepository;
-
-            mealIngredientListItems = new List<IngredientListItem>();
-
             ingredientsSuggestions = _mealRepository.GetAllIngredients();
-
             InitializeComboBoxOptions();
+            mealIngredientListItems = new List<IngredientListItem>();
+            ResetFields();
         }
+
 
         private void InitializeComboBoxOptions()
         {
@@ -48,11 +59,6 @@ namespace OO_Seminar.Controller
 
         }
 
-        public MealAddController(IMealAddView view, Meal meal)
-        {
-            _view = view;
-            _meal = meal;
-        }
 
         public void mealNameChanged()
         {
@@ -63,13 +69,31 @@ namespace OO_Seminar.Controller
         {
             Meal meal = new Meal { Name = _view.MealName, Description = _view.Description, MealType = _view.MealType, Timestamp = _view.Timestamp, Rating = _view.Rating, Calories = _view.Calories, Price = _view.Price, DishType = _view.DishType, Location = _view.Location, PreparationType = _view.PreparationType, Ingredients = mealIngredientListItems.ConvertAll(x => new MealIngredient { Ingredient = x.Ingredient, Importance = x.Importance })};
 
+            if (_meal == null) { // ADDING A NEW MEAL
+                _mealRepository.AddMeal(meal, _view.Image);
+            }
+            else // UPDATING A MEAL
+            {
+                meal.Id = _meal.Id;
+                meal.Image = _meal.Image;
+                if (imageChanged)
+                {
+                    _mealRepository.UpdateMeal(meal, _view.Image);
+                }
+                _mealRepository.UpdateMeal(meal, null);
 
-            _mealRepository.AddMeal(meal, _view.Image);
+            }
 
             _view.Close();
         }
 
         public void resetBtn()
+        {
+            ResetFields();
+            imageChanged = false;
+        }
+
+        private void ResetFields()
         {
             if (_meal == null)
             {
@@ -87,7 +111,8 @@ namespace OO_Seminar.Controller
 
                 mealIngredientListItems.Clear();
                 _view.SetIngredientListItems(mealIngredientListItems.ToArray());
-            } else
+            }
+            else
             {
                 _view.MealName = _meal.Name;
                 _view.Description = _meal?.Description ?? "";
@@ -102,17 +127,23 @@ namespace OO_Seminar.Controller
                 _view.Image = _meal.Image == null ? Properties.Resources.MealArt : DatabaseHelper.GetMealImage(_meal.Image);
 
                 mealIngredientListItems.Clear();
-                
-                foreach(var i in _meal.Ingredients)
+
+                var currentlyAddedIngredients = _meal.Ingredients.ConvertAll(i => i.Ingredient); // List of strings of meal ingredients
+                var possibleIngredients = new List<string>(ingredientsSuggestions); // copy of ingredients suggestions
+                possibleIngredients.RemoveAll(i => currentlyAddedIngredients.Contains(i)); // filter out currently added ingredients 
+                foreach (var i in _meal.Ingredients)
                 {
-                    IngredientListItem ili = new IngredientListItem(new List<string>()); // TODO ADD SUGGESTIONS BUT FILTER OUT ONES THAT ARE ALREADY IN LIST
+
+                    IngredientListItem ili = new IngredientListItem(possibleIngredients);
                     ili.Ingredient = i.Ingredient;
                     ili.Importance = i.Importance;
+                    ili.Dock = DockStyle.Top;
+
 
                     mealIngredientListItems.Add(ili);
                 }
-
                 _view.SetIngredientListItems(mealIngredientListItems.ToArray());
+
             }
         }
 
@@ -126,6 +157,7 @@ namespace OO_Seminar.Controller
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 _view.Image = new Bitmap(dialog.FileName);
+                imageChanged = true;
             }
 
         }

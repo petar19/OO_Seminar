@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBoxMealImage = new System.Windows.Forms.PictureBox();
             this.labelName = new System.Windows.Forms.Label();
             this.labelMealType = new System.Windows.Forms.Label();
             this.labelDishType = new System.Windows.Forms.Label();
@@ -45,19 +44,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxDescription = new System.Windows.Forms.TextBox();
+            this.pictureBoxEditBtn = new System.Windows.Forms.PictureBox();
+            this.pictureBoxMealImage = new System.Windows.Forms.PictureBox();
+            this.pictureBoxDeleteBtn = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEditBtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMealImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDeleteBtn)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pictureBoxMealImage
-            // 
-            this.pictureBoxMealImage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.pictureBoxMealImage.Location = new System.Drawing.Point(3, 3);
-            this.pictureBoxMealImage.Name = "pictureBoxMealImage";
-            this.pictureBoxMealImage.Size = new System.Drawing.Size(203, 183);
-            this.pictureBoxMealImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxMealImage.TabIndex = 0;
-            this.pictureBoxMealImage.TabStop = false;
             // 
             // labelName
             // 
@@ -66,7 +59,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.labelName.AutoSize = true;
             this.labelName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelName.Location = new System.Drawing.Point(498, 3);
+            this.labelName.Location = new System.Drawing.Point(482, 3);
             this.labelName.Name = "labelName";
             this.labelName.Size = new System.Drawing.Size(98, 20);
             this.labelName.TabIndex = 1;
@@ -208,14 +201,49 @@
             this.textBoxDescription.Name = "textBoxDescription";
             this.textBoxDescription.ReadOnly = true;
             this.textBoxDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxDescription.Size = new System.Drawing.Size(236, 166);
+            this.textBoxDescription.Size = new System.Drawing.Size(275, 166);
             this.textBoxDescription.TabIndex = 6;
+            // 
+            // pictureBoxEditBtn
+            // 
+            this.pictureBoxEditBtn.Image = global::OO_Seminar.Properties.Resources.pencil_edit_button_svgrepo_com;
+            this.pictureBoxEditBtn.Location = new System.Drawing.Point(517, 165);
+            this.pictureBoxEditBtn.Name = "pictureBoxEditBtn";
+            this.pictureBoxEditBtn.Size = new System.Drawing.Size(19, 21);
+            this.pictureBoxEditBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxEditBtn.TabIndex = 7;
+            this.pictureBoxEditBtn.TabStop = false;
+            this.pictureBoxEditBtn.Click += new System.EventHandler(this.pictureBoxEditBtn_Click);
+            // 
+            // pictureBoxMealImage
+            // 
+            this.pictureBoxMealImage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.pictureBoxMealImage.Location = new System.Drawing.Point(3, 3);
+            this.pictureBoxMealImage.Name = "pictureBoxMealImage";
+            this.pictureBoxMealImage.Size = new System.Drawing.Size(203, 183);
+            this.pictureBoxMealImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxMealImage.TabIndex = 0;
+            this.pictureBoxMealImage.TabStop = false;
+            // 
+            // pictureBoxDeleteBtn
+            // 
+            this.pictureBoxDeleteBtn.Image = global::OO_Seminar.Properties.Resources.delete_photo_svgrepo_com;
+            this.pictureBoxDeleteBtn.Location = new System.Drawing.Point(561, 165);
+            this.pictureBoxDeleteBtn.Name = "pictureBoxDeleteBtn";
+            this.pictureBoxDeleteBtn.Size = new System.Drawing.Size(19, 21);
+            this.pictureBoxDeleteBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxDeleteBtn.TabIndex = 8;
+            this.pictureBoxDeleteBtn.TabStop = false;
+            this.pictureBoxDeleteBtn.Click += new System.EventHandler(this.pictureBoxDeleteBtn_Click);
             // 
             // MealListItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.pictureBoxDeleteBtn);
+            this.Controls.Add(this.pictureBoxEditBtn);
             this.Controls.Add(this.textBoxDescription);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.labelLocation);
@@ -232,8 +260,10 @@
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.pictureBoxMealImage);
             this.Name = "MealListItem";
-            this.Size = new System.Drawing.Size(913, 195);
+            this.Size = new System.Drawing.Size(952, 195);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEditBtn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMealImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDeleteBtn)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -258,5 +288,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxDescription;
+        private System.Windows.Forms.PictureBox pictureBoxEditBtn;
+        private System.Windows.Forms.PictureBox pictureBoxDeleteBtn;
     }
 }

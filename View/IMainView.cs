@@ -12,6 +12,7 @@ namespace OO_Seminar.View
     {
         void SetController(MainController mainController);
         void AddMealToList(Meal meal);
+        void AddMealList(List<Meal> meals);
         void Clear();
 
     }

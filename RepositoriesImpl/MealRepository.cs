@@ -50,6 +50,7 @@ namespace OO_Seminar.RepositoriesImpl
 
         public void AddMeal(Meal meal, Image image)
         {
+            Console.WriteLine($"adding a meal {meal.Name}");
 
             meals.Add(meal);
             DatabaseHelper.InsertMeal(meal, image);
@@ -193,6 +194,7 @@ namespace OO_Seminar.RepositoriesImpl
 
         public void UpdateMeal(Meal meal, Image image)
         {
+            Console.WriteLine($"updating a meal {meal.Name}");
             var i = meals.FindIndex(m => m.Id == meal.Id);
             if (i != -1)
             {

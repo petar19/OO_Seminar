@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace OO_Seminar.Controller
 {
-    public class MainController : IObserver
+    public class MainController : IObserver, IMealListItemController
     {
         private IMainView _view;
         private IMealRepository _mealRepository;
@@ -23,16 +23,16 @@ namespace OO_Seminar.Controller
 
             _mealRepository.Attach(this);
 
-            refreshMealList();
+            RefreshMealList();
 
 
         }
         public void Update()
         {
-            refreshMealList();
+            RefreshMealList();
         }
 
-        public void addNewMeal()
+        public void AddNewMeal()
         {
             MealAddForm mealAddForm = new MealAddForm();
             MealAddController mealAddController = new MealAddController(mealAddForm, _mealRepository);
@@ -41,20 +41,28 @@ namespace OO_Seminar.Controller
         }
 
 
-        private void refreshMealList()
+        private void RefreshMealList()
         {
             _view.Clear();
 
-            List<Meal> meals = _mealRepository.GetAllMeals();
+            List<Meal> meals = _mealRepository.GetAllMeals().OrderBy(m => m.Timestamp).ToList();
 
-            Console.WriteLine("refershing meal list");
-            
-            foreach(Meal meal in meals)
-            {
-                Console.WriteLine("{0} {1} {2}", meal.Name, meal.Description, meal.Timestamp);
-                _view.AddMealToList(meal);
-            }
+            Console.WriteLine("refreshing meal list");
+
+            _view.AddMealList(meals);
         }
 
+        public void EditMeal(Meal meal)
+        {
+            MealAddForm mealAddForm = new MealAddForm();
+            MealAddController mealAddController = new MealAddController(mealAddForm, _mealRepository, meal);
+
+            mealAddForm.ShowDialog();
+        }
+
+        public void DeleteMeal(Meal meal)
+        {
+            _mealRepository.DeleteMeal(meal);
+        }
     }
 }

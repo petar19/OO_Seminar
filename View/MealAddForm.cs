@@ -45,9 +45,9 @@ namespace OO_Seminar
             _controller = controller;
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        public void SetToUpdateMode()
         {
-
+            Text = "Update a meal";
         }
 
         private void mealNameTextBox_TextChanged(object sender, EventArgs e)

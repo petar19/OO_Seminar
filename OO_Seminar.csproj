@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\IMealListItemController.cs" />
     <Compile Include="Controller\MainController.cs" />
     <Compile Include="Controller\MealAddController.cs" />
     <Compile Include="DatabaseHelper.cs" />
@@ -129,6 +130,11 @@
   <ItemGroup>
     <None Include="Resources\meal.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\pencil-edit-button-svgrepo-com.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete-photo-svgrepo-com.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

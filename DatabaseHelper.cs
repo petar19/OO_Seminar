@@ -12,7 +12,7 @@ namespace OO_Seminar
 {
     public class DatabaseHelper
     {
-        private static string database = "MyData3.db";
+        private static string database = "MyData.db";
         public static void InsertMeal(Meal meal, Image image)
         {
             using (var db = new LiteDatabase(@database))
@@ -85,7 +85,7 @@ namespace OO_Seminar
             {
                 if (image != null)
                 {
-                    db.FileStorage.Delete(meal.Image);
+                    if (meal.Image != null) db.FileStorage.Delete(meal.Image);
 
                     string imgId = Guid.NewGuid().ToString();
 

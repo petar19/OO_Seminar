@@ -8,14 +8,39 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using OO_Seminar.DomainModel;
+using OO_Seminar.Controller;
 
 namespace OO_Seminar.View
 {
     public partial class MealListItem : UserControl
     {
-        public MealListItem()
+        private IMealListItemController _controller;
+        private Meal _meal;
+
+        public MealListItem(IMealListItemController controller, Meal meal)
         {
             InitializeComponent();
+            _controller = controller;
+            _meal = meal;
+
+            SetFields();
+        }
+
+        private void SetFields()
+        {
+            Name = _meal.Name;
+            Description = _meal.Description;
+            MealType = _meal.MealType;
+            DishType = _meal.DishType;
+            PreparationType = _meal.PreparationType;
+            Location = _meal.Location;
+            Timestamp = _meal.Timestamp.ToString();
+            Rating = _meal.Rating.ToString();
+            Calories = _meal.Calories.ToString();
+            Price = _meal.Price.ToString();
+            Image = _meal.Image == null ? Properties.Resources.MealArt : DatabaseHelper.GetMealImage(_meal.Image);
+
+            SetIngredients(_meal.Ingredients);
         }
 
         public void SetIngredients(List<MealIngredient> ingredients)
@@ -42,5 +67,15 @@ namespace OO_Seminar.View
         public string Calories { get => labelCalories.Text; set => labelCalories.Text = value; }
         public string Price { get => labelPrice.Text; set => labelPrice.Text = value; }
         public Image Image { get => pictureBoxMealImage.Image; set => pictureBoxMealImage.Image = value; }
+
+        private void pictureBoxEditBtn_Click(object sender, EventArgs e)
+        {
+            _controller.EditMeal(_meal);
+        }
+
+        private void pictureBoxDeleteBtn_Click(object sender, EventArgs e)
+        {
+            _controller.DeleteMeal(_meal);
+        }
     }
 }
