@@ -75,7 +75,8 @@ namespace OO_Seminar.Controller
 
         public void saveMealBtn()
         {
-            Meal meal = new Meal { Name = _view.MealName, Description = _view.Description, MealType = _view.MealType, Timestamp = _view.Timestamp, Rating = _view.Rating, Calories = _view.Calories, Price = _view.Price, DishType = _view.DishType, Location = _view.Location, PreparationType = _view.PreparationType, Ingredients = mealIngredientListItems.ConvertAll(x => new MealIngredient { Ingredient = x.Ingredient, Importance = x.Importance })};
+            var ingredients = mealIngredientListItems.Where(x => !string.IsNullOrEmpty(x.Ingredient)).Select(x => new MealIngredient { Ingredient = x.Ingredient, Importance = x.Importance }).GroupBy(x => x.Ingredient).Select(x => x.First()).ToList();
+            Meal meal = new Meal { Name = _view.MealName, Description = _view.Description, MealType = _view.MealType, Timestamp = _view.Timestamp, Rating = _view.Rating, Calories = _view.Calories, Price = _view.Price, DishType = _view.DishType, Location = _view.Location, PreparationType = _view.PreparationType, Ingredients = ingredients};
 
             if (_meal == null) { // ADDING A NEW MEAL
                 _mealRepository.AddMeal(meal, _view.Image);
