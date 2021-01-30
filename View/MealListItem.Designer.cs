@@ -44,12 +44,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxDescription = new System.Windows.Forms.TextBox();
+            this.pictureBoxDuplicateBtn = new System.Windows.Forms.PictureBox();
+            this.pictureBoxDeleteBtn = new System.Windows.Forms.PictureBox();
             this.pictureBoxEditBtn = new System.Windows.Forms.PictureBox();
             this.pictureBoxMealImage = new System.Windows.Forms.PictureBox();
-            this.pictureBoxDeleteBtn = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDuplicateBtn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDeleteBtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEditBtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMealImage)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDeleteBtn)).BeginInit();
             this.SuspendLayout();
             // 
             // labelName
@@ -204,6 +206,28 @@
             this.textBoxDescription.Size = new System.Drawing.Size(275, 166);
             this.textBoxDescription.TabIndex = 6;
             // 
+            // pictureBoxDuplicateBtn
+            // 
+            this.pictureBoxDuplicateBtn.Image = global::OO_Seminar.Properties.Resources.plus;
+            this.pictureBoxDuplicateBtn.Location = new System.Drawing.Point(565, 165);
+            this.pictureBoxDuplicateBtn.Name = "pictureBoxDuplicateBtn";
+            this.pictureBoxDuplicateBtn.Size = new System.Drawing.Size(19, 21);
+            this.pictureBoxDuplicateBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxDuplicateBtn.TabIndex = 9;
+            this.pictureBoxDuplicateBtn.TabStop = false;
+            this.pictureBoxDuplicateBtn.Click += new System.EventHandler(this.pictureBoxDuplicate_Click);
+            // 
+            // pictureBoxDeleteBtn
+            // 
+            this.pictureBoxDeleteBtn.Image = global::OO_Seminar.Properties.Resources.delete_photo_svgrepo_com;
+            this.pictureBoxDeleteBtn.Location = new System.Drawing.Point(540, 165);
+            this.pictureBoxDeleteBtn.Name = "pictureBoxDeleteBtn";
+            this.pictureBoxDeleteBtn.Size = new System.Drawing.Size(19, 21);
+            this.pictureBoxDeleteBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxDeleteBtn.TabIndex = 8;
+            this.pictureBoxDeleteBtn.TabStop = false;
+            this.pictureBoxDeleteBtn.Click += new System.EventHandler(this.pictureBoxDeleteBtn_Click);
+            // 
             // pictureBoxEditBtn
             // 
             this.pictureBoxEditBtn.Image = global::OO_Seminar.Properties.Resources.pencil_edit_button_svgrepo_com;
@@ -226,22 +250,12 @@
             this.pictureBoxMealImage.TabIndex = 0;
             this.pictureBoxMealImage.TabStop = false;
             // 
-            // pictureBoxDeleteBtn
-            // 
-            this.pictureBoxDeleteBtn.Image = global::OO_Seminar.Properties.Resources.delete_photo_svgrepo_com;
-            this.pictureBoxDeleteBtn.Location = new System.Drawing.Point(561, 165);
-            this.pictureBoxDeleteBtn.Name = "pictureBoxDeleteBtn";
-            this.pictureBoxDeleteBtn.Size = new System.Drawing.Size(19, 21);
-            this.pictureBoxDeleteBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxDeleteBtn.TabIndex = 8;
-            this.pictureBoxDeleteBtn.TabStop = false;
-            this.pictureBoxDeleteBtn.Click += new System.EventHandler(this.pictureBoxDeleteBtn_Click);
-            // 
             // MealListItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.pictureBoxDuplicateBtn);
             this.Controls.Add(this.pictureBoxDeleteBtn);
             this.Controls.Add(this.pictureBoxEditBtn);
             this.Controls.Add(this.textBoxDescription);
@@ -261,9 +275,10 @@
             this.Controls.Add(this.pictureBoxMealImage);
             this.Name = "MealListItem";
             this.Size = new System.Drawing.Size(952, 195);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDuplicateBtn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDeleteBtn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEditBtn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMealImage)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDeleteBtn)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -290,5 +305,6 @@
         private System.Windows.Forms.TextBox textBoxDescription;
         private System.Windows.Forms.PictureBox pictureBoxEditBtn;
         private System.Windows.Forms.PictureBox pictureBoxDeleteBtn;
+        private System.Windows.Forms.PictureBox pictureBoxDuplicateBtn;
     }
 }

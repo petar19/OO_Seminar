@@ -65,5 +65,10 @@ namespace OO_Seminar
         {
             _controller.OpenStatistics();
         }
+
+        private void buttonSuggestions_Click(object sender, EventArgs e)
+        {
+            _controller.OpenSuggestions();
+        }
     }
 }

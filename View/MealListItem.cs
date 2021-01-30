@@ -26,6 +26,26 @@ namespace OO_Seminar.View
             SetFields();
         }
 
+        public MealListItem(Meal meal)
+        {
+            InitializeComponent();
+            _meal = meal;
+            DisableButtonsAndTimestamp();
+
+            SetFields();
+        }
+
+        private void DisableButtonsAndTimestamp()
+        {
+            pictureBoxDeleteBtn.Visible = false;
+            pictureBoxDeleteBtn.Enabled = false;
+            pictureBoxEditBtn.Visible = false;
+            pictureBoxEditBtn.Enabled = false;
+            pictureBoxDuplicateBtn.Visible = false;
+            pictureBoxDuplicateBtn.Enabled = false;
+            labelTimestamp.Visible = false;
+        }
+
         private void SetFields()
         {
             Name = _meal.Name;
@@ -70,12 +90,17 @@ namespace OO_Seminar.View
 
         private void pictureBoxEditBtn_Click(object sender, EventArgs e)
         {
-            _controller.EditMeal(_meal);
+            _controller?.EditMeal(_meal);
         }
 
         private void pictureBoxDeleteBtn_Click(object sender, EventArgs e)
         {
-            _controller.DeleteMeal(_meal);
+            _controller?.DeleteMeal(_meal);
+        }
+
+        private void pictureBoxDuplicate_Click(object sender, EventArgs e)
+        {
+            _controller?.DuplicateMeal(_meal);
         }
     }
 }

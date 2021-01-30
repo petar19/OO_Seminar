@@ -3,6 +3,7 @@ using OO_Seminar.DomainModel.Repositories;
 using OO_Seminar.View;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -65,6 +66,12 @@ namespace OO_Seminar.Controller
             _mealRepository.DeleteMeal(meal);
         }
 
+
+        public void DuplicateMeal(Meal meal)
+        {
+            _mealRepository.DuplicateMeal(meal);
+        }
+
         public void OpenStatistics()
         {
             StatisticsForm statisticsForm = new StatisticsForm();
@@ -73,5 +80,15 @@ namespace OO_Seminar.Controller
             statisticsForm.ShowDialog();
 
         }
+
+        public void OpenSuggestions()
+        {
+            SuggestionsForm suggestionsForm = new SuggestionsForm();
+            SuggestionsController suggestionsController = new SuggestionsController(suggestionsForm, _mealRepository);
+
+            suggestionsForm.ShowDialog();
+        }
+
+
     }
 }

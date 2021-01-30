@@ -25,6 +25,7 @@ namespace OO_Seminar.RepositoriesImpl
 
         private static MealRepository _instance;
 
+
         private MealRepository()
         {
             meals = DatabaseHelper.GetAllMeals();
@@ -40,6 +41,12 @@ namespace OO_Seminar.RepositoriesImpl
         public static MealRepository getInstance()
         {
             return _instance ?? (_instance = new MealRepository());
+        }
+
+
+        public int GetNumberOfMeals()
+        {
+            return meals.Count;
         }
 
         public void AddMeal(Meal meal)
@@ -110,6 +117,30 @@ namespace OO_Seminar.RepositoriesImpl
             DatabaseHelper.DeleteMeal(meal);
             Notify();
 
+        }
+
+
+        public void DuplicateMeal(Meal meal)
+        {
+            Meal newMeal = new Meal
+            {
+                Name = meal.Name,
+                Calories = meal.Calories,
+                Description = meal.Description,
+                DishType = meal.DishType,
+                Ingredients = meal.Ingredients,
+                Location = meal.Location,
+                MealType = meal.MealType,
+                PreparationType = meal.PreparationType,
+                Price = meal.Price,
+                Rating = meal.Rating,
+                Timestamp = DateTime.Now,
+                Image = meal.Image
+            };
+
+            meals.Add(newMeal);
+            DatabaseHelper.InsertMeal(newMeal);
+            Notify();
         }
 
         public List<Meal> GetAllMeals()
@@ -227,6 +258,16 @@ namespace OO_Seminar.RepositoriesImpl
             {
                 o.Update();
             }
+        }
+
+        public List<Meal> GetLastNMeals(int n)
+        {
+            return meals.OrderByDescending(m => m.Timestamp).Take(n).ToList();
+        }
+
+        public List<Meal> GetUniqueByNameMeals()
+        {
+            return meals.GroupBy(m => m.Name).Select(m => m.First()).ToList();
         }
     }
 }

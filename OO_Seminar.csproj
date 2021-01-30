@@ -55,6 +55,7 @@
     <Compile Include="Controller\MainController.cs" />
     <Compile Include="Controller\MealAddController.cs" />
     <Compile Include="Controller\StatisticsController.cs" />
+    <Compile Include="Controller\SuggestionsController.cs" />
     <Compile Include="DatabaseHelper.cs" />
     <Compile Include="DomainModel\Meal.cs" />
     <Compile Include="DomainModel\MealIngredient.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="IObserver.cs" />
     <Compile Include="RepositoriesImpl\MealRepository.cs" />
     <Compile Include="Statistics.cs" />
+    <Compile Include="Suggestions.cs" />
     <Compile Include="View\IMainView.cs" />
     <Compile Include="View\IMealAddView.cs" />
     <Compile Include="View\IngredientListItem.cs">
@@ -72,6 +74,7 @@
       <DependentUpon>IngredientListItem.cs</DependentUpon>
     </Compile>
     <Compile Include="View\IStatisticsView.cs" />
+    <Compile Include="View\ISuggestionsView.cs" />
     <Compile Include="View\MealAddForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +101,12 @@
     <Compile Include="View\StatisticsForm.Designer.cs">
       <DependentUpon>StatisticsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\SuggestionsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\SuggestionsForm.Designer.cs">
+      <DependentUpon>SuggestionsForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="View\IngredientListItem.resx">
       <DependentUpon>IngredientListItem.cs</DependentUpon>
     </EmbeddedResource>
@@ -123,6 +132,9 @@
     <EmbeddedResource Include="View\StatisticsForm.resx">
       <DependentUpon>StatisticsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\SuggestionsForm.resx">
+      <DependentUpon>SuggestionsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
     <None Include="ClassDiagram2.cd" />
     <None Include="packages.config" />
@@ -147,6 +159,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\delete-photo-svgrepo-com.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plus.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

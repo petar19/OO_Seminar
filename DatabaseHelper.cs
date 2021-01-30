@@ -42,6 +42,19 @@ namespace OO_Seminar
             }
         }
 
+        public static void InsertMeal(Meal meal)
+        {
+            using (var db = new LiteDatabase(@database))
+            {
+                var col = db.GetCollection<Meal>("meals");
+
+                col.Insert(meal);
+
+                col.EnsureIndex(x => x.Name);
+                col.EnsureIndex(x => x.Timestamp);
+            }
+        }
+
         public static Image GetMealImage(string imgId)
         {
             using (var db = new LiteDatabase(@database))
@@ -74,8 +87,6 @@ namespace OO_Seminar
                 var col = db.GetCollection<Meal>("meals");
 
                 col.Delete(meal.Id);
-
-                db.FileStorage.Delete(meal.Image);
             }
         }
 
@@ -85,8 +96,6 @@ namespace OO_Seminar
             {
                 if (image != null)
                 {
-                    if (meal.Image != null) db.FileStorage.Delete(meal.Image);
-
                     string imgId = Guid.NewGuid().ToString();
 
                     using (var stream = new MemoryStream())
@@ -101,6 +110,16 @@ namespace OO_Seminar
                     meal.Image = imgId;
                 }
 
+                var col = db.GetCollection<Meal>("meals");
+
+                col.Update(meal);
+            }
+        }
+
+        public static void UpdateMeal(Meal meal)
+        {
+            using (var db = new LiteDatabase(@database))
+            {
                 var col = db.GetCollection<Meal>("meals");
 
                 col.Update(meal);

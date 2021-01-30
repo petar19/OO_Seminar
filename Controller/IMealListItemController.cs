@@ -11,5 +11,6 @@ namespace OO_Seminar.Controller
     {
         void EditMeal(Meal meal);
         void DeleteMeal(Meal meal);
+        void DuplicateMeal(Meal meal);
     }
 }

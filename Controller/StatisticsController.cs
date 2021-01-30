@@ -20,6 +20,7 @@ namespace OO_Seminar.Controller
         {
             _view = view;
             _mealRepository = mealRepository;
+            _view.SetController(this);
 
             statistics = new Statistics();
             statistics.AddStatsForMeals(_mealRepository.GetAllMeals());

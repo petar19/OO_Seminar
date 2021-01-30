@@ -14,8 +14,13 @@ namespace OO_Seminar.DomainModel.Repositories
         void UpdateMeal(Meal meal, Image image);
         void UpdateMeal(Meal meal);
         void DeleteMeal(Meal meal);
+        void DuplicateMeal(Meal meal);
+
+        int GetNumberOfMeals();
 
         List<Meal> GetAllMeals();
+        List<Meal> GetLastNMeals(int n);
+        List<Meal> GetUniqueByNameMeals();
         List<Meal> GetMealsOfType(List<string> MealTypes);
         List<Meal> GetMealsOfDishType(List<string> DishTypes);
         List<Meal> GetMealsOfPreparationType(List<string> PreparationTypes);

@@ -28,21 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.mealAddBtn = new System.Windows.Forms.Button();
+            this.buttonAddMeal = new System.Windows.Forms.Button();
             this.panelMeals = new System.Windows.Forms.Panel();
             this.buttonStats = new System.Windows.Forms.Button();
+            this.buttonSuggestions = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // mealAddBtn
+            // buttonAddMeal
             // 
-            this.mealAddBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.mealAddBtn.Location = new System.Drawing.Point(12, 548);
-            this.mealAddBtn.Name = "mealAddBtn";
-            this.mealAddBtn.Size = new System.Drawing.Size(75, 23);
-            this.mealAddBtn.TabIndex = 0;
-            this.mealAddBtn.Text = "Add";
-            this.mealAddBtn.UseVisualStyleBackColor = true;
-            this.mealAddBtn.Click += new System.EventHandler(this.addMealBtn_Click);
+            this.buttonAddMeal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonAddMeal.Location = new System.Drawing.Point(12, 548);
+            this.buttonAddMeal.Name = "buttonAddMeal";
+            this.buttonAddMeal.Size = new System.Drawing.Size(75, 23);
+            this.buttonAddMeal.TabIndex = 0;
+            this.buttonAddMeal.Text = "Add";
+            this.buttonAddMeal.UseVisualStyleBackColor = true;
+            this.buttonAddMeal.Click += new System.EventHandler(this.addMealBtn_Click);
             // 
             // panelMeals
             // 
@@ -66,14 +67,26 @@
             this.buttonStats.UseVisualStyleBackColor = true;
             this.buttonStats.Click += new System.EventHandler(this.buttonStats_Click);
             // 
+            // buttonSuggestions
+            // 
+            this.buttonSuggestions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonSuggestions.Location = new System.Drawing.Point(12, 490);
+            this.buttonSuggestions.Name = "buttonSuggestions";
+            this.buttonSuggestions.Size = new System.Drawing.Size(75, 23);
+            this.buttonSuggestions.TabIndex = 3;
+            this.buttonSuggestions.Text = "Suggestions";
+            this.buttonSuggestions.UseVisualStyleBackColor = true;
+            this.buttonSuggestions.Click += new System.EventHandler(this.buttonSuggestions_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1067, 583);
+            this.Controls.Add(this.buttonSuggestions);
             this.Controls.Add(this.buttonStats);
             this.Controls.Add(this.panelMeals);
-            this.Controls.Add(this.mealAddBtn);
+            this.Controls.Add(this.buttonAddMeal);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "What did I eat?";
@@ -84,9 +97,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Button mealAddBtn;
+        private System.Windows.Forms.Button buttonAddMeal;
         private System.Windows.Forms.Panel panelMeals;
         private System.Windows.Forms.Button buttonStats;
+        private System.Windows.Forms.Button buttonSuggestions;
     }
 }
 
