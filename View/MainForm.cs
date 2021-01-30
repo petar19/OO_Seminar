@@ -67,5 +67,10 @@ namespace OO_Seminar
 
             panelMeals.Controls.AddRange(items);
         }
+
+        private void buttonStats_Click(object sender, EventArgs e)
+        {
+            _controller.OpenStatistics();
+        }
     }
 }

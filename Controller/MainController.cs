@@ -64,5 +64,14 @@ namespace OO_Seminar.Controller
         {
             _mealRepository.DeleteMeal(meal);
         }
+
+        public void OpenStatistics()
+        {
+            StatisticsForm statisticsForm = new StatisticsForm();
+            StatisticsController statisticsController = new StatisticsController(statisticsForm, _mealRepository);
+
+            statisticsForm.ShowDialog();
+
+        }
     }
 }

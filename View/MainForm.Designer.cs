@@ -30,6 +30,7 @@
         {
             this.mealAddBtn = new System.Windows.Forms.Button();
             this.panelMeals = new System.Windows.Forms.Panel();
+            this.buttonStats = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // mealAddBtn
@@ -54,11 +55,23 @@
             this.panelMeals.Size = new System.Drawing.Size(958, 559);
             this.panelMeals.TabIndex = 1;
             // 
+            // buttonStats
+            // 
+            this.buttonStats.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonStats.Location = new System.Drawing.Point(12, 519);
+            this.buttonStats.Name = "buttonStats";
+            this.buttonStats.Size = new System.Drawing.Size(75, 23);
+            this.buttonStats.TabIndex = 2;
+            this.buttonStats.Text = "Statistics";
+            this.buttonStats.UseVisualStyleBackColor = true;
+            this.buttonStats.Click += new System.EventHandler(this.buttonStats_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1067, 583);
+            this.Controls.Add(this.buttonStats);
             this.Controls.Add(this.panelMeals);
             this.Controls.Add(this.mealAddBtn);
             this.Name = "MainForm";
@@ -73,6 +86,7 @@
 
         private System.Windows.Forms.Button mealAddBtn;
         private System.Windows.Forms.Panel panelMeals;
+        private System.Windows.Forms.Button buttonStats;
     }
 }
 

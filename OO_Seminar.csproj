@@ -54,6 +54,7 @@
     <Compile Include="Controller\IMealListItemController.cs" />
     <Compile Include="Controller\MainController.cs" />
     <Compile Include="Controller\MealAddController.cs" />
+    <Compile Include="Controller\StatisticsController.cs" />
     <Compile Include="DatabaseHelper.cs" />
     <Compile Include="DomainModel\Meal.cs" />
     <Compile Include="DomainModel\MealIngredient.cs" />
@@ -61,6 +62,7 @@
     <Compile Include="IObservable.cs" />
     <Compile Include="IObserver.cs" />
     <Compile Include="RepositoriesImpl\MealRepository.cs" />
+    <Compile Include="Statistics.cs" />
     <Compile Include="View\IMainView.cs" />
     <Compile Include="View\IMealAddView.cs" />
     <Compile Include="View\IngredientListItem.cs">
@@ -69,6 +71,7 @@
     <Compile Include="View\IngredientListItem.Designer.cs">
       <DependentUpon>IngredientListItem.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\IStatisticsView.cs" />
     <Compile Include="View\MealAddForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +91,12 @@
     </Compile>
     <Compile Include="View\MealListItem.Designer.cs">
       <DependentUpon>MealListItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\StatisticsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\StatisticsForm.Designer.cs">
+      <DependentUpon>StatisticsForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="View\IngredientListItem.resx">
       <DependentUpon>IngredientListItem.cs</DependentUpon>
@@ -110,6 +119,9 @@
     </Compile>
     <EmbeddedResource Include="View\MealListItem.resx">
       <DependentUpon>MealListItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\StatisticsForm.resx">
+      <DependentUpon>StatisticsForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
     <None Include="ClassDiagram2.cd" />
