@@ -40,13 +40,6 @@ namespace OO_Seminar
         }
 
 
-        public void AddMealToList(Meal meal)
-        {
-            MealListItem item = CreateMealListItem(meal);
-
-            panelMeals.Controls.Add(item);
-        }
-
         private MealListItem CreateMealListItem(Meal meal)
         {
             MealListItem item = new MealListItem(_controller, meal);
@@ -63,7 +56,7 @@ namespace OO_Seminar
 
         public void AddMealList(List<Meal> meals)
         {
-            var items = meals.ConvertAll(m => CreateMealListItem(m)).ToArray();
+            var items = meals.Select((m, index) => CreateMealListItem(m)).ToArray();
 
             panelMeals.Controls.AddRange(items);
         }

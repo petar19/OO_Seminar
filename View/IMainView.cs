@@ -11,7 +11,6 @@ namespace OO_Seminar.View
     public interface IMainView
     {
         void SetController(MainController mainController);
-        void AddMealToList(Meal meal);
         void AddMealList(List<Meal> meals);
         void Clear();
 

@@ -68,7 +68,7 @@ namespace OO_Seminar.View
                 ratings.Points.AddXY(pair.Key, pair.Value);
             }
 
-            chartRatings.Titles.First().Text = $"Meal ratings, average: {avg}";
+            chartRatings.Titles.First().Text = $"Meal ratings, average: {avg.ToString("N2")}";
         }
 
         public void SetCaloriesData(Dictionary<int, int> data, double avg)
@@ -78,7 +78,7 @@ namespace OO_Seminar.View
                 calories.Points.AddXY(pair.Key, pair.Value);
             }
 
-            chartCalories.Titles.First().Text = $"Meal calories, average: {avg}";
+            chartCalories.Titles.First().Text = $"Meal calories, average: {avg.ToString("N2")}";
         }
 
         public void SetPricesData(Dictionary<int, int> data, double avg)
@@ -88,7 +88,7 @@ namespace OO_Seminar.View
                 prices.Points.AddXY(pair.Key, pair.Value);
             }
 
-            chartPrices.Titles.First().Text = $"Meal prices, average: {avg}";
+            chartPrices.Titles.First().Text = $"Meal prices, average: {avg.ToString("N2")}";
         }
 
         public void SetLocationsData(Dictionary<string, int> data)

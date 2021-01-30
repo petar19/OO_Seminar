@@ -68,6 +68,7 @@
             this.chartPreparationTypes = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartIngredients = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartHours = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.chartRatings)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartCalories)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartPrices)).BeginInit();
@@ -76,10 +77,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.chartPreparationTypes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartIngredients)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartHours)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // chartRatings
             // 
+            this.chartRatings.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             chartArea1.AxisX.Maximum = 11D;
             chartArea1.AxisX.Minimum = 0D;
             chartArea1.Name = "ChartArea1";
@@ -87,14 +92,14 @@
             legend1.Enabled = false;
             legend1.Name = "Legend1";
             this.chartRatings.Legends.Add(legend1);
-            this.chartRatings.Location = new System.Drawing.Point(12, 12);
+            this.chartRatings.Location = new System.Drawing.Point(13, 13);
             this.chartRatings.Name = "chartRatings";
             this.chartRatings.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.EarthTones;
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chartRatings.Series.Add(series1);
-            this.chartRatings.Size = new System.Drawing.Size(376, 300);
+            this.chartRatings.Size = new System.Drawing.Size(300, 269);
             this.chartRatings.TabIndex = 0;
             this.chartRatings.Text = "chart1";
             title1.Name = "Ratings";
@@ -103,6 +108,9 @@
             // 
             // chartCalories
             // 
+            this.chartCalories.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             chartArea2.AxisX.Maximum = 11D;
             chartArea2.AxisX.Minimum = 0D;
             chartArea2.Name = "ChartArea1";
@@ -110,14 +118,14 @@
             legend2.Enabled = false;
             legend2.Name = "Legend1";
             this.chartCalories.Legends.Add(legend2);
-            this.chartCalories.Location = new System.Drawing.Point(394, 12);
+            this.chartCalories.Location = new System.Drawing.Point(319, 13);
             this.chartCalories.Name = "chartCalories";
             this.chartCalories.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Fire;
             series2.ChartArea = "ChartArea1";
             series2.Legend = "Legend1";
             series2.Name = "Series1";
             this.chartCalories.Series.Add(series2);
-            this.chartCalories.Size = new System.Drawing.Size(376, 300);
+            this.chartCalories.Size = new System.Drawing.Size(300, 269);
             this.chartCalories.TabIndex = 1;
             this.chartCalories.Text = "chartCalories";
             title2.Name = "Calories";
@@ -126,6 +134,9 @@
             // 
             // chartPrices
             // 
+            this.chartPrices.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             chartArea3.AxisX.Maximum = 11D;
             chartArea3.AxisX.Minimum = 0D;
             chartArea3.Name = "ChartArea1";
@@ -133,14 +144,14 @@
             legend3.Enabled = false;
             legend3.Name = "Legend1";
             this.chartPrices.Legends.Add(legend3);
-            this.chartPrices.Location = new System.Drawing.Point(776, 12);
+            this.chartPrices.Location = new System.Drawing.Point(625, 13);
             this.chartPrices.Name = "chartPrices";
             this.chartPrices.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Bright;
             series3.ChartArea = "ChartArea1";
             series3.Legend = "Legend1";
             series3.Name = "Series1";
             this.chartPrices.Series.Add(series3);
-            this.chartPrices.Size = new System.Drawing.Size(376, 300);
+            this.chartPrices.Size = new System.Drawing.Size(300, 269);
             this.chartPrices.TabIndex = 2;
             this.chartPrices.Text = "chart1";
             title3.Name = "Prices";
@@ -149,18 +160,21 @@
             // 
             // chartLocations
             // 
+            this.chartLocations.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             chartArea4.Name = "ChartArea1";
             this.chartLocations.ChartAreas.Add(chartArea4);
             legend4.Name = "Legend1";
             this.chartLocations.Legends.Add(legend4);
-            this.chartLocations.Location = new System.Drawing.Point(12, 318);
+            this.chartLocations.Location = new System.Drawing.Point(13, 288);
             this.chartLocations.Name = "chartLocations";
             series4.ChartArea = "ChartArea1";
             series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
             series4.Legend = "Legend1";
             series4.Name = "Series1";
             this.chartLocations.Series.Add(series4);
-            this.chartLocations.Size = new System.Drawing.Size(376, 307);
+            this.chartLocations.Size = new System.Drawing.Size(300, 269);
             this.chartLocations.TabIndex = 3;
             this.chartLocations.Text = "chart1";
             title4.Name = "Title1";
@@ -169,18 +183,21 @@
             // 
             // chartMealNames
             // 
+            this.chartMealNames.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             chartArea5.Name = "ChartArea1";
             this.chartMealNames.ChartAreas.Add(chartArea5);
             legend5.Name = "Legend1";
             this.chartMealNames.Legends.Add(legend5);
-            this.chartMealNames.Location = new System.Drawing.Point(394, 318);
+            this.chartMealNames.Location = new System.Drawing.Point(319, 288);
             this.chartMealNames.Name = "chartMealNames";
             series5.ChartArea = "ChartArea1";
             series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
             series5.Legend = "Legend1";
             series5.Name = "Series1";
             this.chartMealNames.Series.Add(series5);
-            this.chartMealNames.Size = new System.Drawing.Size(376, 307);
+            this.chartMealNames.Size = new System.Drawing.Size(300, 269);
             this.chartMealNames.TabIndex = 4;
             this.chartMealNames.Text = "chart1";
             title5.Name = "Title1";
@@ -189,18 +206,21 @@
             // 
             // chartPreparationTypes
             // 
+            this.chartPreparationTypes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             chartArea6.Name = "ChartArea1";
             this.chartPreparationTypes.ChartAreas.Add(chartArea6);
             legend6.Name = "Legend1";
             this.chartPreparationTypes.Legends.Add(legend6);
-            this.chartPreparationTypes.Location = new System.Drawing.Point(776, 318);
+            this.chartPreparationTypes.Location = new System.Drawing.Point(625, 288);
             this.chartPreparationTypes.Name = "chartPreparationTypes";
             series6.ChartArea = "ChartArea1";
             series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
             series6.Legend = "Legend1";
             series6.Name = "Series1";
             this.chartPreparationTypes.Series.Add(series6);
-            this.chartPreparationTypes.Size = new System.Drawing.Size(376, 307);
+            this.chartPreparationTypes.Size = new System.Drawing.Size(300, 269);
             this.chartPreparationTypes.TabIndex = 5;
             this.chartPreparationTypes.Text = "chart1";
             title6.Name = "Title1";
@@ -209,18 +229,21 @@
             // 
             // chartIngredients
             // 
+            this.chartIngredients.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             chartArea7.Name = "ChartArea1";
             this.chartIngredients.ChartAreas.Add(chartArea7);
             legend7.Name = "Legend1";
             this.chartIngredients.Legends.Add(legend7);
-            this.chartIngredients.Location = new System.Drawing.Point(1158, 318);
+            this.chartIngredients.Location = new System.Drawing.Point(931, 288);
             this.chartIngredients.Name = "chartIngredients";
             series7.ChartArea = "ChartArea1";
             series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
             series7.Legend = "Legend1";
             series7.Name = "Series1";
             this.chartIngredients.Series.Add(series7);
-            this.chartIngredients.Size = new System.Drawing.Size(376, 307);
+            this.chartIngredients.Size = new System.Drawing.Size(301, 269);
             this.chartIngredients.TabIndex = 6;
             this.chartIngredients.Text = "chart1";
             title7.Name = "Title1";
@@ -229,6 +252,9 @@
             // 
             // chartHours
             // 
+            this.chartHours.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             chartArea8.AxisX.Maximum = 24D;
             chartArea8.AxisX.Minimum = 0D;
             chartArea8.Name = "ChartArea1";
@@ -236,33 +262,53 @@
             legend8.Enabled = false;
             legend8.Name = "Legend1";
             this.chartHours.Legends.Add(legend8);
-            this.chartHours.Location = new System.Drawing.Point(1158, 12);
+            this.chartHours.Location = new System.Drawing.Point(931, 13);
             this.chartHours.Name = "chartHours";
             this.chartHours.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Excel;
             series8.ChartArea = "ChartArea1";
             series8.Legend = "Legend1";
             series8.Name = "Series1";
             this.chartHours.Series.Add(series8);
-            this.chartHours.Size = new System.Drawing.Size(376, 300);
+            this.chartHours.Size = new System.Drawing.Size(301, 269);
             this.chartHours.TabIndex = 7;
             this.chartHours.Text = "chart1";
             title8.Name = "Title1";
             title8.Text = "Hours of day";
             this.chartHours.Titles.Add(title8);
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.ColumnCount = 4;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.Controls.Add(this.chartRatings, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.chartIngredients, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.chartHours, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.chartLocations, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.chartMealNames, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.chartPrices, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.chartPreparationTypes, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.chartCalories, 1, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(10);
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1245, 570);
+            this.tableLayoutPanel1.TabIndex = 8;
+            // 
             // StatisticsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1627, 1003);
-            this.Controls.Add(this.chartHours);
-            this.Controls.Add(this.chartIngredients);
-            this.Controls.Add(this.chartPreparationTypes);
-            this.Controls.Add(this.chartMealNames);
-            this.Controls.Add(this.chartLocations);
-            this.Controls.Add(this.chartPrices);
-            this.Controls.Add(this.chartCalories);
-            this.Controls.Add(this.chartRatings);
+            this.ClientSize = new System.Drawing.Size(1269, 594);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "StatisticsForm";
             this.Text = "StatisticsForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -274,6 +320,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chartPreparationTypes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartIngredients)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartHours)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -288,5 +335,6 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chartPreparationTypes;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartIngredients;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartHours;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }
