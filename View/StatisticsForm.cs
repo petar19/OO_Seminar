@@ -18,21 +18,47 @@ namespace OO_Seminar.View
         private Series ratings;
         private Series calories;
         private Series prices;
+        private Series hours;
+
+
+        private Series locations;
+        private Series mealNames;
+        private Series preparationTypes;
+        private Series ingredients;
+
+
 
 
 
         public StatisticsForm()
         {
             InitializeComponent();
-            ratings = chartRatings.Series.FindByName("Ratings");
-            calories = chartCalories.Series.FindByName("Calories");
-            prices = chartPrices.Series.FindByName("Prices");
+            ratings = chartRatings.Series.FindByName("Series1");
+            calories = chartCalories.Series.FindByName("Series1");
+            prices = chartPrices.Series.FindByName("Series1");
+            hours = chartHours.Series.FindByName("Series1");
+
+
+            locations = chartLocations.Series.FindByName("Series1");
+            mealNames = chartMealNames.Series.FindByName("Series1");
+            preparationTypes = chartPreparationTypes.Series.FindByName("Series1");
+            ingredients = chartIngredients.Series.FindByName("Series1");
+
 
         }
 
         public void SetController(StatisticsController controller)
         {
             _controller = controller;
+        }
+
+        public void SetHoursData(Dictionary<int, int> data)
+        {
+            foreach (KeyValuePair<int, int> pair in data)
+            {
+                hours.Points.AddXY(pair.Key, pair.Value);
+            }
+
         }
 
         public void SetRatingsData(Dictionary<int, int> data, double avg)
@@ -63,6 +89,54 @@ namespace OO_Seminar.View
             }
 
             chartPrices.Titles.First().Text = $"Meal prices, average: {avg}";
+        }
+
+        public void SetLocationsData(Dictionary<string, int> data)
+        {
+            foreach (KeyValuePair<string, int> pair in data)
+            {
+                var dp = new DataPoint();
+                dp.SetValueY(pair.Value);
+                dp.LegendText = pair.Key;
+                dp.Label = pair.Value.ToString();
+                locations.Points.Add(dp);
+            }
+        }
+
+        public void SetMealNamesData(Dictionary<string, int> data)
+        {
+            foreach (KeyValuePair<string, int> pair in data)
+            {
+                var dp = new DataPoint();
+                dp.SetValueY(pair.Value);
+                dp.LegendText = pair.Key;
+                dp.Label = pair.Value.ToString();
+                mealNames.Points.Add(dp);
+            }
+        }
+
+        public void SetPreparationTypesData(Dictionary<string, int> data)
+        {
+            foreach (KeyValuePair<string, int> pair in data)
+            {
+                var dp = new DataPoint();
+                dp.SetValueY(pair.Value);
+                dp.LegendText = pair.Key;
+                dp.Label = pair.Value.ToString();
+                preparationTypes.Points.Add(dp);
+            }
+        }
+
+        public void SetIngredientsData(Dictionary<string, int> data)
+        {
+            foreach (KeyValuePair<string, int> pair in data)
+            {
+                var dp = new DataPoint();
+                dp.SetValueY(pair.Value);
+                dp.LegendText = pair.Key;
+                dp.Label = pair.Value.ToString();
+                ingredients.Points.Add(dp);
+            }
         }
     }
 }

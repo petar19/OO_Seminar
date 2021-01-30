@@ -9,8 +9,10 @@ namespace OO_Seminar
 {
     class Statistics
     {
-        private readonly string DEFAULT_LOCATION = "Unknown Location";
-        private readonly string DEFAULT_PREPARATION_TYPE = "Unknown Preparation type";
+        private readonly string DEFAULT_LOCATION = "Nepoznato";
+        private readonly string DEFAULT_PREPARATION_TYPE = "Nepoznato";
+
+        public Dictionary<int, int> Hours { get; private set; }
 
         public Dictionary<int, int> Ratings { get; private set; }
         public double RatingSum { get; private set; }
@@ -36,6 +38,8 @@ namespace OO_Seminar
             Ratings = new Dictionary<int, int>();
             Calories = new Dictionary<int, int>();
             Prices = new Dictionary<int, int>();
+            Hours = new Dictionary<int, int>();
+
 
             Locations = new Dictionary<string, int>();
             PreparationTypes = new Dictionary<string, int>();
@@ -47,6 +51,8 @@ namespace OO_Seminar
         public void AddStatsForMeal(Meal meal)
         {
             NumMeals++;
+
+            Hours[meal.Timestamp.Hour] = Hours.TryGetValue(meal.Timestamp.Hour, out var v0) ? ++v0 : 1;
 
             Ratings[meal.Rating] = Ratings.TryGetValue(meal.Rating, out var v1) ? ++v1 : 1;
             Calories[meal.Calories] = Calories.TryGetValue(meal.Calories, out var v2) ? ++v2 : 1;
@@ -90,6 +96,13 @@ namespace OO_Seminar
             output += $"Statistics, {NumMeals} meals added\n\nRatings:\n";
 
             foreach(KeyValuePair<int,int> pair in Ratings)
+            {
+                output += $"{pair.Key}:{pair.Value}\n";
+            }
+
+            output += "\nHours:\n";
+
+            foreach (KeyValuePair<int, int> pair in Hours)
             {
                 output += $"{pair.Key}:{pair.Value}\n";
             }

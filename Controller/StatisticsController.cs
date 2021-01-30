@@ -34,6 +34,15 @@ namespace OO_Seminar.Controller
             _view.SetRatingsData(statistics.Ratings, statistics.AvgRating);
             _view.SetCaloriesData(statistics.Calories, statistics.AvgCalories);
             _view.SetPricesData(statistics.Prices, statistics.AvgPrice);
+            _view.SetHoursData(statistics.Hours);
+
+
+            _view.SetLocationsData(statistics.Locations);
+            _view.SetMealNamesData(statistics.MealNames);
+            _view.SetPreparationTypesData(statistics.PreparationTypes);
+            _view.SetIngredientsData(statistics.Ingredients);
+
+
 
         }
 
