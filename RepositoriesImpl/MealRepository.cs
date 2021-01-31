@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace OO_Seminar.RepositoriesImpl
 {
-    class MealRepository : IMealRepository
+    public class MealRepository : IMealRepository
     {
         List<Meal> meals;
 

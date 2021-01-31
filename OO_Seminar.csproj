@@ -57,6 +57,7 @@
     <Compile Include="Controller\StatisticsController.cs" />
     <Compile Include="Controller\SuggestionsController.cs" />
     <Compile Include="DatabaseHelper.cs" />
+    <Compile Include="DomainModel\Exceptions\WhatDidIEatBaseException.cs" />
     <Compile Include="DomainModel\Meal.cs" />
     <Compile Include="DomainModel\MealIngredient.cs" />
     <Compile Include="DomainModel\Repositories\IMealRepository.cs" />
@@ -163,5 +164,6 @@
   <ItemGroup>
     <None Include="Resources\plus.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
