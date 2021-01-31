@@ -14,5 +14,11 @@ namespace OO_Seminar.View
         void AddMealList(List<Meal> meals);
         void Clear();
 
+        DateTime StartTime { get; set; }
+        DateTime EndTime { get; set; }
+
+        string Keywords { get; set; }
+
+
     }
 }

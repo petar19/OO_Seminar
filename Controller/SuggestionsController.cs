@@ -38,7 +38,6 @@ namespace OO_Seminar.Controller
         public void Suggest()
         {
             var basedOn = _mealRepository.GetLastNMeals(_view.BasedOn);
-            basedOn.Reverse();
             var mealsToChooseFrom = _mealRepository.GetUniqueByNameMeals();
 
             var suggested = suggestions.GetSuggestedMeals(basedOn, mealsToChooseFrom, _view.NumberOfMeals);

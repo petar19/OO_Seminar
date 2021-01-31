@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace OO_Seminar.Controller
 {
@@ -14,6 +15,11 @@ namespace OO_Seminar.Controller
     {
         private IMainView _view;
         private IMealRepository _mealRepository;
+
+        private List<string> searchKeywords;
+        private DateTime startTime;
+        private DateTime endTime;
+
 
         public MainController(IMainView view, IMealRepository mealRepository)
         {
@@ -24,8 +30,9 @@ namespace OO_Seminar.Controller
 
             _mealRepository.Attach(this);
 
-            RefreshMealList();
+            searchKeywords = new List<string>();
 
+            RemoveFilters();
 
         }
         public void Update()
@@ -46,9 +53,14 @@ namespace OO_Seminar.Controller
         {
             _view.Clear();
 
-            List<Meal> meals = _mealRepository.GetAllMeals().OrderBy(m => m.Timestamp).ToList();
+            List<Meal> meals = _mealRepository.GetMealsInTimePeriodAndWithKeywords(startTime, endTime, searchKeywords);
+            Console.WriteLine($"searching with {startTime}, {endTime} and");
+            foreach(var k in searchKeywords) Console.WriteLine(k);
+
 
             Console.WriteLine("refreshing meal list");
+            foreach(var m in meals) Console.WriteLine(m.Name);
+
 
             _view.AddMealList(meals);
         }
@@ -87,6 +99,28 @@ namespace OO_Seminar.Controller
             SuggestionsController suggestionsController = new SuggestionsController(suggestionsForm, _mealRepository);
 
             suggestionsForm.ShowDialog();
+        }
+
+        public void Filter()
+        {
+            startTime = _view.StartTime;
+            endTime = _view.EndTime;
+            searchKeywords = _view.Keywords.Split(new string[] { ",", "\r", "\n", " "}, StringSplitOptions.RemoveEmptyEntries).Select(s => s.ToLowerInvariant()).ToList();
+
+            RefreshMealList();
+
+        }
+
+        public void RemoveFilters()
+        {
+            searchKeywords.Clear();
+            startTime = DateTime.Now.AddDays(-10);
+            endTime = DateTime.Now.AddDays(1);
+            _view.StartTime = startTime;
+            _view.EndTime = endTime;
+            _view.Keywords = "";
+
+            RefreshMealList();
         }
 
 

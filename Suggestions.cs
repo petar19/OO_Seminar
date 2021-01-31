@@ -43,14 +43,20 @@ namespace OO_Seminar
                 {
                     double similarity = CalculateMealSimilarity(m, basedOn[i]);
 
-                    double score = (suggestionPositionWeight * (i / n) + suggestionSimilarityWeight) * similarity;
+                    double score = (suggestionPositionWeight * (n / (i + 1)) + suggestionSimilarityWeight) * similarity;
 
-                    Console.WriteLine($"{m.Name} compared to {basedOn[i].Name} scores {score}, similarity: {similarity}, position similarity: {i / n}");
+                    Console.WriteLine($"\n{m.Name} compared to {basedOn[i].Name} scores {score}, similarity: {similarity}, position similarity: {n / (i + 1)}\n");
 
                     mealScores[m] = mealScores.TryGetValue(m, out var currentScore) ? currentScore + score : score;
 
-                    Console.WriteLine($"current score: {mealScores[m]}");
                 }
+
+                Console.WriteLine("scores after round " + i);
+                foreach(KeyValuePair<Meal, double> pair in mealScores)
+                {
+                    Console.WriteLine($"{pair.Key.Name}:{pair.Value}");
+                }
+                Console.WriteLine();
             }
 
             return mealScores.OrderBy(m => m.Value).First().Key;
@@ -73,7 +79,7 @@ namespace OO_Seminar
 
         private double CalculateMealSimilarity(Meal m1, Meal m2)
         {
-            Console.WriteLine($"\ncomparing meals {m1.Name} and {m2.Name}");
+            //Console.WriteLine($"\ncomparing meals {m1.Name} and {m2.Name}");
 
             double similarity = 0.0;
 
@@ -82,7 +88,7 @@ namespace OO_Seminar
             var numberOfRepeatingWordsInName = meal1Words.Intersect(meal2Words).Count();
             double nameSimilarity =  (2 * numberOfRepeatingWordsInName / (meal1Words.Count + meal2Words.Count)); // repeatingWords / avgNumWords in meal names
             similarity += nameWeight * nameSimilarity;
-            Console.WriteLine("name similarity:" + nameSimilarity);
+            //Console.WriteLine("name similarity:" + nameSimilarity);
 
 
             var mealTypeSimilarity = 0;
@@ -97,7 +103,7 @@ namespace OO_Seminar
             if (m1.PreparationType != null && m2.PreparationType != null && m1.PreparationType.Equals(m2.PreparationType)) preparationTypeSimilarity = 1;
             similarity += preparationTypeWeight * preparationTypeSimilarity;
 
-            Console.WriteLine($"meal type similarity:{mealTypeSimilarity}, dish type similarity: {dishTypeSimilarity}, preparationTypeSimilarity:{preparationTypeSimilarity}");
+            //Console.WriteLine($"meal type similarity:{mealTypeSimilarity}, dish type similarity: {dishTypeSimilarity}, preparationTypeSimilarity:{preparationTypeSimilarity}");
 
 
             double caloriesSimilarity = 1 - 0.1 * Math.Abs(m1.Calories - m2.Calories); // weight * (1 - abs(diff)/10) => example: 5 and 7 => 1 - 2/10 = 0.8; 5 and 9 => 0.6
@@ -107,7 +113,7 @@ namespace OO_Seminar
             double ratingSimilarity = 1 - 0.1 * Math.Abs(m1.Rating - m2.Rating);
             similarity += ratingWeight * ratingSimilarity;
 
-            Console.WriteLine($"calories similarity:{caloriesSimilarity}, price similarity: {priceSimilarity}, rating similarity:{ratingSimilarity}");
+            //Console.WriteLine($"calories similarity:{caloriesSimilarity}, price similarity: {priceSimilarity}, rating similarity:{ratingSimilarity}");
 
 
             if (m1.Ingredients.Count != 0 && m2.Ingredients.Count != 0) // if one of the meals has no ingredients just skip this part
@@ -125,20 +131,20 @@ namespace OO_Seminar
                 foreach(var i in repeatingIngredients) // calculating sum of importance similiarities
                 {
                     double ingredientSimilarity = 1 - 0.1 * Math.Abs(meal1IngredientsDict[i] - meal2IngredientsDict[i]);
-                    Console.WriteLine($"ingredient {i} with imporances {meal1IngredientsDict[i]} and {meal2IngredientsDict[i]} has similarity: {ingredientSimilarity}");
+                    //Console.WriteLine($"ingredient {i} with imporances {meal1IngredientsDict[i]} and {meal2IngredientsDict[i]} has similarity: {ingredientSimilarity}");
                     ingredientsImportanceSimilarity += ingredientSimilarity;
                 }
 
                 if (repeatingIngredients.Count() > 0) ingredientsImportanceSimilarity /= repeatingIngredients.Count();
                 similarity += ingredientsImportanceWeight * ingredientsImportanceSimilarity;
 
-                Console.WriteLine($"ingredients number similarity:{ingredientsNumberSimilarity}, ingredient importance similarity: {ingredientsImportanceSimilarity} ");
+                //Console.WriteLine($"ingredients number similarity:{ingredientsNumberSimilarity}, ingredient importance similarity: {ingredientsImportanceSimilarity} ");
             } else
             {
-                Console.WriteLine("meals have no common ingredients");
+                //Console.WriteLine("one of the meals doesn't have ingredients");
             }
 
-            Console.WriteLine($"calculated similarity: {similarity}\n");
+            //Console.WriteLine($"calculated similarity: {similarity}\n");
 
 
             return similarity;

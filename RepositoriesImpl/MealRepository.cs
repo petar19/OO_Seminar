@@ -145,7 +145,7 @@ namespace OO_Seminar.RepositoriesImpl
 
         public List<Meal> GetAllMeals()
         {
-            return meals;
+            return meals.OrderBy(m => m.Timestamp).ToList();
         }
 
         public List<string> GetAllMealTypes()
@@ -178,50 +178,6 @@ namespace OO_Seminar.RepositoriesImpl
             return meals.Find(m => m.Id == Id);
         }
 
-        public List<Meal> GetMealsByName(List<string> Tokens)
-        {
-            return meals.FindAll(m => Tokens.Any(m.Name.Contains));
-        }
-
-        public List<Meal> GetMealsInTimePeriod(DateTime From, DateTime To)
-        {
-            return meals.FindAll(m => m.Timestamp.CompareTo(From) >= 0 && m.Timestamp.CompareTo(To) <= 0);
-        }
-
-        public List<Meal> GetMealsOfDishType(List<string> DishTypes)
-        {
-            return meals.FindAll(m => DishTypes.Contains(m.DishType));
-        }
-
-        public List<Meal> GetMealsOfPreparationType(List<string> PreparationTypes)
-        {
-            return meals.FindAll(m => PreparationTypes.Contains(m.PreparationType));
-        }
-
-        public List<Meal> GetMealsOfType(List<string> MealTypes)
-        {
-            return meals.FindAll(m => MealTypes.Contains(m.MealType));
-        }
-        public List<Meal> GetMealsWithLocation(List<string> Locations)
-        {
-            return meals.FindAll(m => Locations.Contains(m.Location));
-        }
-
-        public List<Meal> GetMealsWithCalories(int From, int To)
-        {
-            return meals.FindAll(m => m.Calories >= From && m.Calories <= To);
-        }
-
-
-        public List<Meal> GetMealsWithPrice(int From, int To)
-        {
-            return meals.FindAll(m => m.Price >= From && m.Price <= To);
-        }
-
-        public List<Meal> GetMealsWithRating(int From, int To)
-        {
-            return meals.FindAll(m => m.Rating >= From && m.Rating <= To);
-        }
 
         public void UpdateMeal(Meal meal, Image image)
         {
@@ -267,7 +223,13 @@ namespace OO_Seminar.RepositoriesImpl
 
         public List<Meal> GetUniqueByNameMeals()
         {
-            return meals.GroupBy(m => m.Name).Select(m => m.First()).ToList();
+            return meals.GroupBy(m => m.Name).Select(m => m.Last()).ToList();
+        }
+
+        public List<Meal> GetMealsInTimePeriodAndWithKeywords(DateTime startTime, DateTime endTime, List<string> keywords)
+        {
+            return meals.FindAll(m => m.Timestamp.CompareTo(startTime) >= 0 && m.Timestamp.CompareTo(endTime) <= 0 && (keywords.Count == 0 || keywords.Any(m.Name.ToLowerInvariant().Contains)));
+
         }
     }
 }

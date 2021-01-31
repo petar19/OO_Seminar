@@ -21,18 +21,7 @@ namespace OO_Seminar.DomainModel.Repositories
         List<Meal> GetAllMeals();
         List<Meal> GetLastNMeals(int n);
         List<Meal> GetUniqueByNameMeals();
-        List<Meal> GetMealsOfType(List<string> MealTypes);
-        List<Meal> GetMealsOfDishType(List<string> DishTypes);
-        List<Meal> GetMealsOfPreparationType(List<string> PreparationTypes);
-        List<Meal> GetMealsWithLocation(List<string> Locations);
-
-        List<Meal> GetMealsWithRating(int From, int To);
-        List<Meal> GetMealsWithPrice(int From, int To);
-        List<Meal> GetMealsWithCalories(int From, int To);
-        List<Meal> GetMealsInTimePeriod(DateTime From, DateTime To);
-
-        List<Meal> GetMealsByName(List<string> Tokens);
-
+        List<Meal> GetMealsInTimePeriodAndWithKeywords(DateTime startTime, DateTime endTime, List<string> keywords);
         Meal GetMealById(int Id);
 
 

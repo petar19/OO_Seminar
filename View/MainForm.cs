@@ -17,6 +17,10 @@ namespace OO_Seminar
     {
         private MainController _controller;
 
+        public DateTime StartTime { get => dateTimePickerStartTime.Value; set => dateTimePickerStartTime.Value = value; }
+        public DateTime EndTime { get => dateTimePickerEndTime.Value; set => dateTimePickerEndTime.Value = value; }
+        public string Keywords { get => richTextBoxKeywords.Text; set => richTextBoxKeywords.Text = value; }
+
         public MainForm()
         {
             InitializeComponent();
@@ -69,6 +73,16 @@ namespace OO_Seminar
         private void buttonSuggestions_Click(object sender, EventArgs e)
         {
             _controller.OpenSuggestions();
+        }
+
+        private void filterBtn_Click(object sender, EventArgs e)
+        {
+            _controller.Filter();
+        }
+
+        private void removeFiltersBtn_Click(object sender, EventArgs e)
+        {
+            _controller.RemoveFilters();
         }
     }
 }
