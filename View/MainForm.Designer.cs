@@ -48,7 +48,7 @@
             // buttonAddMeal
             // 
             this.buttonAddMeal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonAddMeal.Location = new System.Drawing.Point(1118, 576);
+            this.buttonAddMeal.Location = new System.Drawing.Point(1118, 537);
             this.buttonAddMeal.Name = "buttonAddMeal";
             this.buttonAddMeal.Size = new System.Drawing.Size(75, 23);
             this.buttonAddMeal.TabIndex = 0;
@@ -64,13 +64,13 @@
             this.panelMeals.AutoScroll = true;
             this.panelMeals.Location = new System.Drawing.Point(216, 12);
             this.panelMeals.Name = "panelMeals";
-            this.panelMeals.Size = new System.Drawing.Size(977, 558);
+            this.panelMeals.Size = new System.Drawing.Size(976, 519);
             this.panelMeals.TabIndex = 1;
             // 
             // buttonStats
             // 
             this.buttonStats.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonStats.Location = new System.Drawing.Point(1037, 576);
+            this.buttonStats.Location = new System.Drawing.Point(1037, 537);
             this.buttonStats.Name = "buttonStats";
             this.buttonStats.Size = new System.Drawing.Size(75, 23);
             this.buttonStats.TabIndex = 2;
@@ -81,7 +81,7 @@
             // buttonSuggestions
             // 
             this.buttonSuggestions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonSuggestions.Location = new System.Drawing.Point(956, 576);
+            this.buttonSuggestions.Location = new System.Drawing.Point(956, 537);
             this.buttonSuggestions.Name = "buttonSuggestions";
             this.buttonSuggestions.Size = new System.Drawing.Size(75, 23);
             this.buttonSuggestions.TabIndex = 3;
@@ -138,7 +138,7 @@
             // filterBtn
             // 
             this.filterBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.filterBtn.Location = new System.Drawing.Point(129, 547);
+            this.filterBtn.Location = new System.Drawing.Point(129, 508);
             this.filterBtn.Name = "filterBtn";
             this.filterBtn.Size = new System.Drawing.Size(75, 23);
             this.filterBtn.TabIndex = 6;
@@ -170,7 +170,7 @@
             // removeFiltersBtn
             // 
             this.removeFiltersBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.removeFiltersBtn.Location = new System.Drawing.Point(18, 547);
+            this.removeFiltersBtn.Location = new System.Drawing.Point(18, 508);
             this.removeFiltersBtn.Name = "removeFiltersBtn";
             this.removeFiltersBtn.Size = new System.Drawing.Size(75, 23);
             this.removeFiltersBtn.TabIndex = 8;
@@ -182,7 +182,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1205, 611);
+            this.ClientSize = new System.Drawing.Size(1204, 572);
             this.Controls.Add(this.removeFiltersBtn);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.filterBtn);

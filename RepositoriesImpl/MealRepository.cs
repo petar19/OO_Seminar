@@ -1,5 +1,7 @@
 ﻿using OO_Seminar.DomainModel;
 using OO_Seminar.DomainModel.Repositories;
+using OO_Seminar.DomainModel.Exceptions;
+
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -26,21 +28,47 @@ namespace OO_Seminar.RepositoriesImpl
         private static MealRepository _instance;
 
 
-        private MealRepository()
+        private MealRepository(bool useDB)
         {
-            meals = DatabaseHelper.GetAllMeals();
-            mealTypes = DatabaseHelper.GetAllMealTypes().ToHashSet();
-            locations = DatabaseHelper.GetAllLocations().ToHashSet();
-            dishTypes = DatabaseHelper.GetAllDishTypes().ToHashSet();
-            preparationTypes = DatabaseHelper.GetAllPreparationTypes().ToHashSet();
-            ingredients = DatabaseHelper.GetAllIngredients().ToHashSet();
+            if (useDB)
+            {
+                meals = DatabaseHelper.GetAllMeals();
+                mealTypes = DatabaseHelper.GetAllMealTypes().ToHashSet();
+                locations = DatabaseHelper.GetAllLocations().ToHashSet();
+                dishTypes = DatabaseHelper.GetAllDishTypes().ToHashSet();
+                preparationTypes = DatabaseHelper.GetAllPreparationTypes().ToHashSet();
+                ingredients = DatabaseHelper.GetAllIngredients().ToHashSet();
+            }
+            else
+            {
+                meals = new List<Meal>();
+
+                mealTypes = new HashSet<string>();
+                locations = new HashSet<string>();
+                dishTypes = new HashSet<string>();
+                preparationTypes = new HashSet<string>();
+                ingredients = new HashSet<string>();
+            }
 
             observers = new List<IObserver>();
         }
 
-        public static MealRepository getInstance()
+
+        public static MealRepository getInstance(bool useDB)
         {
-            return _instance ?? (_instance = new MealRepository());
+            return _instance ?? (useDB ? _instance = new MealRepository(true) : _instance = new MealRepository(false));
+        }
+
+
+        private void checkDuplicateIngredients(Meal meal)
+        {
+            HashSet<string> ingredients = new HashSet<string>();
+            
+            foreach(var i in meal.Ingredients)
+            {
+                if (ingredients.Contains(i.Ingredient)) throw new DuplicateIngredientsException();
+                else ingredients.Add(i.Ingredient);
+            }
         }
 
 
@@ -58,6 +86,8 @@ namespace OO_Seminar.RepositoriesImpl
         public void AddMeal(Meal meal, Image image)
         {
             Console.WriteLine($"adding a meal {meal.Name}");
+
+            checkDuplicateIngredients(meal);
 
             meals.Add(meal);
             DatabaseHelper.InsertMeal(meal, image);
@@ -122,6 +152,8 @@ namespace OO_Seminar.RepositoriesImpl
 
         public void DuplicateMeal(Meal meal)
         {
+            checkDuplicateIngredients(meal);
+
             Meal newMeal = new Meal
             {
                 Name = meal.Name,
@@ -182,14 +214,16 @@ namespace OO_Seminar.RepositoriesImpl
         public void UpdateMeal(Meal meal, Image image)
         {
             Console.WriteLine($"updating a meal {meal.Name}");
+            checkDuplicateIngredients(meal);
+
             var i = meals.FindIndex(m => m.Id == meal.Id);
             if (i != -1)
             {
                 meals[i] = meal;
                 DatabaseHelper.UpdateMeal(meal, image);
                 UpdateSuggestions(meal);
+                Notify();
             }
-            Notify();
             
         }
 
@@ -228,7 +262,7 @@ namespace OO_Seminar.RepositoriesImpl
 
         public List<Meal> GetMealsInTimePeriodAndWithKeywords(DateTime startTime, DateTime endTime, List<string> keywords)
         {
-            return meals.FindAll(m => m.Timestamp.CompareTo(startTime) >= 0 && m.Timestamp.CompareTo(endTime) <= 0 && (keywords.Count == 0 || keywords.Any(m.Name.ToLowerInvariant().Contains)));
+            return meals.FindAll(m => m.Timestamp.CompareTo(startTime) >= 0 && m.Timestamp.CompareTo(endTime) <= 0 && (keywords.Count == 0 || keywords.Any(m.Name.ToLowerInvariant().Contains))).OrderBy(m => m.Timestamp).ToList(); ;
 
         }
     }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OO_Seminar
 {
-    class Statistics
+    public class Statistics
     {
         private readonly string DEFAULT_LOCATION = "Nepoznato";
         private readonly string DEFAULT_PREPARATION_TYPE = "Nepoznato";
@@ -15,15 +15,15 @@ namespace OO_Seminar
         public Dictionary<int, int> Hours { get; private set; }
 
         public Dictionary<int, int> Ratings { get; private set; }
-        public double RatingSum { get; private set; }
+        private double RatingSum { get; set; }
         public double AvgRating { get => RatingSum / NumMeals; }
 
         public Dictionary<int, int> Calories { get; private set; }
-        public double CaloriesSum { get; private set; }
+        private double CaloriesSum { get; set; }
         public double AvgCalories { get => CaloriesSum / NumMeals; }
 
         public Dictionary<int, int> Prices { get; private set; }
-        public double PriceSum { get; private set; }
+        private double PriceSum { get; set; }
         public double AvgPrice { get => PriceSum / NumMeals; }
 
         public Dictionary<string, int> Locations { get; private set; }

@@ -1,0 +1,250 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="OO_Seminar.DatabaseHelper">
+    <Position X="3.5" Y="10" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>QAAAMAQAAEBAAEBggBAAAAAAARQAAAAAgAAAAAAAAEA=</HashCode>
+      <FileName>DatabaseHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OO_Seminar.Program" Collapsed="true">
+    <Position X="2.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OO_Seminar.Statistics">
+    <Position X="25.75" Y="14" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>IBAEIAAAAQAQIAAEAwIAACAAIAEAAQAAAAAAQAIAIAA=</HashCode>
+      <FileName>Statistics.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OO_Seminar.Suggestions">
+    <Position X="11.75" Y="13.25" Width="6.5" />
+    <TypeIdentifier>
+      <HashCode>ABiAAABAAAAAAAAABAAAAFBAABCAAAAAAQACAAAAAAA=</HashCode>
+      <FileName>Suggestions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OO_Seminar.MainForm" BaseTypeListCollapsed="true">
+    <Position X="4.25" Y="5.25" Width="2.5" />
+    <Members>
+      <Method Name="AddMealList" Hidden="true" />
+      <Method Name="Clear" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="Form1_Load" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Method Name="SetController" Hidden="true" />
+      <Method Name="SetSuggestionsAndStatisticsButtons" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>ABAAAAASACQAAAAgAACAAEECMEAwAAIAACUSAEBUgAA=</HashCode>
+      <FileName>View\MainForm.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="OO_Seminar.MealAddForm" BaseTypeListCollapsed="true">
+    <Position X="13.25" Y="5.75" Width="3.5" />
+    <Members>
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="EnableConfirmBtn" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Method Name="SetController" Hidden="true" />
+      <Method Name="SetDishTypeOptions" Hidden="true" />
+      <Method Name="SetIngredientListItems" Hidden="true" />
+      <Method Name="SetLocationOptions" Hidden="true" />
+      <Method Name="SetMealTypeOptions" Hidden="true" />
+      <Method Name="SetPreparationTypeOptions" Hidden="true" />
+      <Method Name="SetToUpdateMode" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>fAIAAAAARTQ0EAECASKCAEICHAIIAVUAZCFAQ0IBCgA=</HashCode>
+      <FileName>View\MealAddForm.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="OO_Seminar.Controller.MainController" BaseTypeListCollapsed="true">
+    <Position X="9.75" Y="3.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAwAAAAAACAgACAAABQEACEAACAAQQAAAAA=</HashCode>
+      <FileName>Controller\MainController.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="OO_Seminar.Controller.MealAddController">
+    <Position X="17" Y="0.5" Width="5.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAQIAAAAAAgAACEAAACAgAAAIAQAACQCIAABAAA=</HashCode>
+      <FileName>Controller\MealAddController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OO_Seminar.Controller.StatisticsController">
+    <Position X="25.75" Y="11.5" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAACAABAAAAAAAAAAAACACAAAAAAA=</HashCode>
+      <FileName>Controller\StatisticsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OO_Seminar.Controller.SuggestionsController">
+    <Position X="11.25" Y="10.75" Width="5.25" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAACAAAAAAAAAAAAAAACACAAAEAAA=</HashCode>
+      <FileName>Controller\SuggestionsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OO_Seminar.DomainModel.Meal">
+    <Position X="25.25" Y="1.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>IAICAAAAAQAgAAAAAAICACQAAAAAAFEABAAAAAAAAAA=</HashCode>
+      <FileName>DomainModel\Meal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OO_Seminar.DomainModel.MealIngredient">
+    <Position X="25.25" Y="4.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DomainModel\MealIngredient.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OO_Seminar.RepositoriesImpl.MealRepository" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="7.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAQMEAAABEJIAEIgICAgggACAZQAJARAAABAAAACAAA=</HashCode>
+      <FileName>RepositoriesImpl\MealRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="OO_Seminar.View.IngredientListItem">
+    <Position X="17" Y="5.25" Width="5.5" />
+    <Members>
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAJAAAACAAEAAAgACAAAAKAAAAAAIgAAAAAAAAAAA=</HashCode>
+      <FileName>View\IngredientListItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OO_Seminar.View.MealListItem">
+    <Position X="7" Y="3.5" Width="2.5" />
+    <Members>
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>IYIBAAgAISAwEBEEBiOCAA0CCwACAFEAJABAQFAAAAE=</HashCode>
+      <FileName>View\MealListItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OO_Seminar.View.StatisticsForm" BaseTypeListCollapsed="true">
+    <Position X="21.75" Y="14.25" Width="3.75" />
+    <Members>
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Method Name="SetCaloriesData" Hidden="true" />
+      <Method Name="SetController" Hidden="true" />
+      <Method Name="SetHoursData" Hidden="true" />
+      <Method Name="SetIngredientsData" Hidden="true" />
+      <Method Name="SetLocationsData" Hidden="true" />
+      <Method Name="SetMealNamesData" Hidden="true" />
+      <Method Name="SetPreparationTypesData" Hidden="true" />
+      <Method Name="SetPricesData" Hidden="true" />
+      <Method Name="SetRatingsData" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>EAABEBJAECgFAAAAISCgAAJCEAAACAgAAEAAQGAEACA=</HashCode>
+      <FileName>View\StatisticsForm.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="OO_Seminar.View.SuggestionsForm" BaseTypeListCollapsed="true">
+    <Position X="7.75" Y="13.25" Width="3.75" />
+    <Members>
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Method Name="SetComboBoxBasedOn" Hidden="true" />
+      <Method Name="SetComboBoxNumberOfMeals" Hidden="true" />
+      <Method Name="SetController" Hidden="true" />
+      <Method Name="SetSuggestedMeals" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AABAAAAQAiAAABAAAACAQAAiEAQAAAEAACEgAECAAAA=</HashCode>
+      <FileName>View\SuggestionsForm.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="OO_Seminar.IObservable">
+    <Position X="0.5" Y="1.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAAAAAAIAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>IObservable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OO_Seminar.IObserver">
+    <Position X="11" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IObserver.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OO_Seminar.Controller.IMealListItemController">
+    <Position X="8.5" Y="1.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgAAAAAAQAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controller\IMealListItemController.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OO_Seminar.DomainModel.Repositories.IMealRepository">
+    <Position X="0.5" Y="3" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAABEJAAEAgAAAgAgAAAZQAJAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DomainModel\Repositories\IMealRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OO_Seminar.View.IMainView">
+    <Position X="4.25" Y="2.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEAMEAgAAAAAAAAAABAgAA=</HashCode>
+      <FileName>View\IMainView.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OO_Seminar.View.IMealAddView">
+    <Position X="13.25" Y="0.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>IAIAAAAABQAkAAAAAQICAAIAGAAIAFEAJABAAACAAAA=</HashCode>
+      <FileName>View\IMealAddView.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OO_Seminar.View.IStatisticsView">
+    <Position X="21.75" Y="11.5" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAEABAAAAEAAAAAAAgAAAAEAAACAAAAEAAQAAEAAA=</HashCode>
+      <FileName>View\IStatisticsView.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OO_Seminar.View.ISuggestionsView">
+    <Position X="7.75" Y="10.75" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAQAgAAAAAAAAAAAAAAEAQAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>View\ISuggestionsView.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

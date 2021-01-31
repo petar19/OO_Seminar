@@ -19,7 +19,7 @@ namespace OO_Seminar
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            MealRepository mealRepository = MealRepository.getInstance();
+            MealRepository mealRepository = MealRepository.getInstance(true);
 
             MainForm mainForm = new MainForm();
             MainController mainController = new MainController(mainForm, mealRepository);

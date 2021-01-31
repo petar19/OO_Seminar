@@ -53,14 +53,16 @@ namespace OO_Seminar.Controller
         {
             _view.Clear();
 
+            if (_mealRepository.GetNumberOfMeals() == 0)
+            {
+                _view.SetSuggestionsAndStatisticsButtons(false);
+                return;
+            }
+
+            _view.SetSuggestionsAndStatisticsButtons(true);
             List<Meal> meals = _mealRepository.GetMealsInTimePeriodAndWithKeywords(startTime, endTime, searchKeywords);
-            Console.WriteLine($"searching with {startTime}, {endTime} and");
-            foreach(var k in searchKeywords) Console.WriteLine(k);
 
-
-            Console.WriteLine("refreshing meal list");
-            foreach(var m in meals) Console.WriteLine(m.Name);
-
+            Console.WriteLine($"first meal id: {meals[2].Id}");
 
             _view.AddMealList(meals);
         }
@@ -114,7 +116,7 @@ namespace OO_Seminar.Controller
         public void RemoveFilters()
         {
             searchKeywords.Clear();
-            startTime = DateTime.Now.AddDays(-10);
+            startTime = DateTime.Now.AddMonths(-1);
             endTime = DateTime.Now.AddDays(1);
             _view.StartTime = startTime;
             _view.EndTime = endTime;

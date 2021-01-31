@@ -13,6 +13,7 @@ namespace OO_Seminar.View
         void SetController(MainController mainController);
         void AddMealList(List<Meal> meals);
         void Clear();
+        void SetSuggestionsAndStatisticsButtons(bool enabled);
 
         DateTime StartTime { get; set; }
         DateTime EndTime { get; set; }

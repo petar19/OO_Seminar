@@ -30,7 +30,7 @@ namespace OO_Seminar.Controller
         private void Init()
         {
             _view.SetComboBoxBasedOn(Enumerable.Range(1, Math.Min(14, _mealRepository.GetNumberOfMeals())).ToList());
-            _view.SetComboBoxNumberOfMeals(Enumerable.Range(1, Math.Min(7, _mealRepository.GetNumberOfMeals())).ToList());
+            _view.SetComboBoxNumberOfMeals(Enumerable.Range(1, 7).ToList());
 
 
         }

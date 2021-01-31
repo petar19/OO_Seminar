@@ -84,5 +84,11 @@ namespace OO_Seminar
         {
             _controller.RemoveFilters();
         }
+
+        public void SetSuggestionsAndStatisticsButtons(bool enabled)
+        {
+            buttonStats.Enabled = enabled;
+            buttonSuggestions.Enabled = enabled;
+        }
     }
 }

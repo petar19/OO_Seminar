@@ -14,6 +14,10 @@ namespace OO_Seminar.DomainModel.Exceptions
     {
     }
 
+    public class DuplicateIngredientsException : WhatDidIEatBaseException
+    {
+    }
+
 
 
 
